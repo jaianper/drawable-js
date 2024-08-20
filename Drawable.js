@@ -266,13 +266,33 @@ var LB_UTILS = {
         }
         var defaultImages = LB_UTILS.ImageCache['75_75'];
         if (typeof defaultImages[imgName] !== "undefined") {
-            LB_UTILS.ImageCache[imgSize][imgName] = CG_FUNCT.cloneJSON(defaultImages[imgName]);
+            LB_UTILS.ImageCache[imgSize][imgName] = LB_UTILS.cloneJSON(defaultImages[imgName]);
             LB_UTILS.ImageCache[imgSize][imgName].w = width;
             LB_UTILS.ImageCache[imgSize][imgName].h = height;
             result = LB_UTILS.ImageCache[imgSize][imgName];
         }
         return result;
     },
+	cloneJSON: function(source){
+		var copy;
+		if(source.constructor == Object){
+			copy = {};
+			var keys = Object.keys(source);
+			var key;
+			for(var i=0; i<keys.length; ++i){
+				key=keys[i];
+				copy[key] = LB_UTILS.cloneJSON(source[key]);
+			}
+		} else if(source.constructor == Array) {
+			copy = [];
+			for(var i=0; i<source.length; ++i){
+				copy.push(LB_UTILS.cloneJSON(source[i]));
+			}
+		} else {
+			copy = source;
+		}
+		return copy;
+	},
     /**
      * Drawable
      * @version : 0.0.1
