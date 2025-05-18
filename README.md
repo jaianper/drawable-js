@@ -1,7 +1,7 @@
 
-# Drawable.js
+# DrawableJS
 
-**Drawable.js** is a lightweight JavaScript library to draw shapes, gradients, styled text, and more on HTML5 `<canvas>`. It is inspired by Android's `Drawable` resource, but designed for the modern web.
+**DrawableJS** is a lightweight JavaScript library to draw shapes, gradients, styled text, and more on HTML5 `<canvas>`. It is inspired by Android's `Drawable` resource, but designed for the modern web.
 
 ## Features
 - Draw basic shapes: rectangles, ovals, lines and images.
