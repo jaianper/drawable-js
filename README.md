@@ -3,8 +3,6 @@
 
 **Drawable.js** is a lightweight JavaScript library to draw shapes, gradients, styled text, and more on HTML5 `<canvas>`. It is inspired by Android's `Drawable` resource, but designed for the modern web.
 
----
-
 ## Features
 - Draw basic shapes: rectangles, ovals, lines and images.
 - Support for solid colors and gradients (linear and radial).
@@ -14,13 +12,8 @@
 - Compatible with both ES Modules and classic script tags (UMD).
 - Inspired by Android’s `Drawable` and `Canvas` system.
 
----
-
 ## Installation
 
-### Modern projects (ESM)
-
-#### Installation
 Install via `npm`:
 ```bash
 npm install drawable-js
@@ -31,12 +24,10 @@ Or include directly in the browser (UMD version):
 <script src="dist/drawable.umd.js"></script>
 ```
 
----
-
-#### Usage
+## Usage
 
 ### With ES Modules
-Draw a Rectangle with Linear Gradient
+Draw a Rectangle with Linear Gradient:
 ```js
 import { Drawable, Shape, Gradient } from 'drawable-js';
 
@@ -73,7 +64,7 @@ rect.build();
 
 ![Rectangle](examples/Rectangle.png)
 
-Draw a Circle with Radial Gradient
+Draw a Circle with Radial Gradient:
 ```js
 import { Drawable, Shape, Gradient } from 'drawable-js';
 
@@ -111,7 +102,7 @@ circle.build();
 ![Circle](examples/Circle.png)
 
 ### With UMD in Browser
-Draw a Rectangle with Linear Gradient
+Draw a Rectangle with Linear Gradient:
 ```html
 <script src="dist/drawable.umd.js"></script>
 <script>
@@ -149,7 +140,7 @@ Draw a Rectangle with Linear Gradient
 
 ![Rectangle](examples/Rectangle.png)
 
-Draw a Circle with Radial Gradient
+Draw a Circle with Radial Gradient:
 ```html
 <script src="dist/drawable.umd.js"></script>
 <script>
@@ -187,14 +178,12 @@ Draw a Circle with Radial Gradient
 
 ![Circle](examples/Circle.png)
 
----
-
 ## Fonts
 You can preload fonts using `FontLoader.load`:
 
+```js
 import { FontLoader, Font } from 'drawable-js';
 
-```js
 FontLoader.load({
   families: [Font.ARIAL],
   active: () => {
@@ -202,8 +191,6 @@ FontLoader.load({
   }
 });
 ```
-
----
 
 ## Demos
 You can explore working examples in the `/demo` folder:
@@ -215,8 +202,6 @@ Run locally:
 npm run dev
 ```
 Then open one of the demo pages in your browser.
-
----
 
 ## Development
 Build the library before testing or publishing:
@@ -230,17 +215,11 @@ npm run release
 ```
 (This automatically bumps the patch version and publishes to npm.)
 
----
-
 ## Inspiration
 This system is inspired by the Android `Drawable` class. It's made to help developers who are familiar with Android work easily on drawing and graphic design projects in the web environment.
-
----
 
 ## License
 MIT
 
----
-
-## 👤 Author
+## Author
 Created by [jaianper](https://github.com/jaianper). Feel free to contribute or suggest improvements!
