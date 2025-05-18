@@ -62,7 +62,7 @@ rect.update = () => {
 rect.build();
 ```
 
-![Rectangle](examples/Rectangle.png)
+![Rectangle](screenshots/Rectangle.png)
 
 Draw a Circle with Radial Gradient:
 ```js
@@ -99,7 +99,7 @@ circle.update = () => {
 circle.build();
 ```
 
-![Circle](examples/Circle.png)
+![Circle](screenshots/Circle.png)
 
 ### With UMD in Browser
 Draw a Rectangle with Linear Gradient:
@@ -138,7 +138,7 @@ Draw a Rectangle with Linear Gradient:
 </script>
 ```
 
-![Rectangle](examples/Rectangle.png)
+![Rectangle](screenshots/Rectangle.png)
 
 Draw a Circle with Radial Gradient:
 ```html
@@ -176,10 +176,10 @@ Draw a Circle with Radial Gradient:
 </script>
 ```
 
-![Circle](examples/Circle.png)
+![Circle](screenshots/Circle.png)
 
 ## Fonts
-You can preload fonts using `FontLoader.load`:
+You can preload fonts into the Canvas using `FontLoader.load`:
 
 ```js
 import { FontLoader, Font } from 'drawable-js';
