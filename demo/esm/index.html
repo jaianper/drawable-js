@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Drawable.js Demo</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+    }
+    canvas {
+      border: 1px solid #ccc;
+    }
+  </style>
+</head>
+<body>
+  <h1>Demo: Drawable Rectangle & Circle with Gradients</h1>
+  <canvas id="myCanvas" width="400" height="300"></canvas>
+
+  <script type="module">
+    import { Drawable, Shape, Gradient } from '../../dist/drawable.js';
+
+    const canvas = document.getElementById("myCanvas");
+    const ctx = canvas.getContext("2d");
+
+    // Rectangle with linear gradient
+    const rect = new Drawable(200, 100);
+    rect.ctx = ctx;
+    rect.update = () => {
+        rect.items = [
+        {
+            shape: Shape.RECTANGLE,
+            x: 20,
+            y: 20,
+            width: 200,
+            height: 100,
+            gradient: {
+                type: Gradient.LINEAR_GRADIENT,
+                angle: 45,
+                center: { x: '50%', y: '50%' },
+                startColor: "#FF5733",
+                endColor: "#FFC300"
+            },
+            stroke: {
+                color: "#333333",
+                width: 2
+            },
+            cornerRadius: [15, 15, 15, 15]
+        }
+        ];
+    };
+    rect.build();
+
+    // Circle with radial gradient
+    const circle = new Drawable(100, 100);
+    circle.ctx = ctx;
+    circle.update = () => {
+        circle.items = [
+            {
+                shape: Shape.OVAL,
+                x: 300,
+                y: 150,
+                radius: 50,
+                gradient: {
+                    type: Gradient.RADIAL_GRADIENT,
+                    center1: { x: 300, y: 150 },
+                    radius1: 10,
+                    center2: { x: 300, y: 150 },
+                    radius2: 50,
+                    startColor: "#00c6ff",
+                    endColor: "#0072ff"
+                },
+                stroke: {
+                    color: "#333333",
+                    width: 2
+                }
+            }
+        ];
+    };
+    circle.build();
+  </script>
+</body>
+</html>
