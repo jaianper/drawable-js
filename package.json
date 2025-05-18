@@ -1,0 +1,23 @@
+{
+  "name": "drawable-js",
+  "version": "1.0.0",
+  "description": "A lightweight JavaScript library to draw shapes and effects on HTML canvas, inspired by Android's Drawable.",
+  "main": "src/Drawable.js",
+  "scripts": {
+    "start": "live-server demo"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jaianper/drawable-js.git"
+  },
+  "author": "jaianper",
+  "license": "MIT",
+  "keywords": [
+    "canvas",
+    "drawable",
+    "graphics",
+    "javascript",
+    "html5",
+    "shapes"
+  ]
+}
