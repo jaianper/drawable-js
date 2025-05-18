@@ -2,9 +2,7 @@
 
 This folder contains two demos to help you test and explore how the library works in real web pages. You can choose between a modern approach using ES modules, or a classic one using a traditional script tag.
 
----
-
-## 📁 esm/index.html
+## esm/index.html
 A demo using **ES Modules** (`<script type="module">`).
 
 ### How to use:
@@ -28,9 +26,7 @@ A demo using **ES Modules** (`<script type="module">`).
    npm run build
    ```
 
----
-
-## 📁 umd/index.html
+## umd/index.html
 A demo using a **classic script tag** and the UMD build (`drawable.umd.js`).
 
 ### How to use:
@@ -44,20 +40,16 @@ A demo using a **classic script tag** and the UMD build (`drawable.umd.js`).
    ```html
    <script src="../../dist/drawable.umd.js"></script>
    ```
-   And uses the global variable `DrawableLib`:
+   And uses the global variable `DrawableJS`:
    ```js
-   const d = new DrawableLib.Drawable(...);
+   const d = new DrawableJS.Drawable(...);
    ```
 
----
-
-## 🛠 Requirements
+## Requirements
 - Make sure to run `npm install` first to install all dependencies.
 - Use `npm run build` to generate both ESM and UMD versions.
 
----
-
-## 🧪 Feel free to modify the demos
+## Feel free to modify the demos
 You can add new shapes, animations, or even font loaders to see how the library behaves in real use cases.
 
 Enjoy!
