@@ -81,4 +81,6 @@ Developed by `jaianper`.
 
 ## License
 
-This project is free to use for personal and educational purposes. For commercial use, please contact the author.
+This project is licensed under the **MIT License**.
+
+You are free to use, modify, and distribute this project for personal or commercial purposes, as long as you include the original copyright.
