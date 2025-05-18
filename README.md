@@ -26,6 +26,8 @@ This project is a demo of the `Drawable.js` library, a JavaScript library to cre
 
 Each component is built using a configuration object. Example:
 
+### Drawing a rectangle
+
 ```js
 new Rectangle({
   x: 50,
@@ -43,6 +45,31 @@ new Rectangle({
   }
 });
 ```
+
+![Rectangle](examples/Rectangle.png)
+
+### Drawing a circle
+
+```js
+new Circle({
+  x: 250,
+  y: 250,
+  width: 200,
+  height: 100,
+  ccRadii: 60,
+  background: {
+    gradient: {
+      type: LB_UTILS.Gradient.RADIAL_GRADIENT,
+      radius1: 0,
+      radius2: 60,
+      startColor: "#33C1FF",
+      endColor: "#3333FF"
+    }
+  }
+});
+```
+
+![Circle](examples/Circle.png)
 
 ## Inspiration
 
