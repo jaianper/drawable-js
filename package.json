@@ -1,23 +1,44 @@
 {
-  "name": "DrawableJS",
+  "name": "drawable-js",
   "version": "1.0.0",
   "description": "A lightweight JavaScript library to draw shapes and effects on HTML canvas, inspired by Android's Drawable.",
-  "main": "src/Drawable.js",
+  "main": "dist/drawable.umd.js",
+  "module": "dist/drawable.js",
+  "exports": {
+    "import": "./dist/drawable.js",
+    "require": "./dist/drawable.umd.js"
+  },
   "scripts": {
-    "start": "live-server demo"
+    "dev": "live-server demo",
+    "build": "rollup -c",
+    "release": "npm version patch && npm publish"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/jaianper/DrawableJS.git"
+    "url": "https://github.com/jaianper/drawable-js.git"
   },
   "author": "jaianper",
   "license": "MIT",
+  "type": "module",
   "keywords": [
     "canvas",
-    "drawable",
     "graphics",
-    "javascript",
+    "drawing",
+    "drawable",
     "html5",
-    "shapes"
+    "2d",
+    "shapes",
+    "javascript"
+  ],
+  "devDependencies": {
+    "@babel/core": "^7.24.0",
+    "@babel/preset-env": "^7.24.0",
+    "@rollup/plugin-babel": "^6.0.3",
+    "rollup": "^4.15.0"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
   ]
 }
