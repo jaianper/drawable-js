@@ -27,7 +27,6 @@ export const Orientation = {
 
 // - hPerc is an approximate percentage for any text size, which allows you to calculate the height (px) that alphanumeric characters will have when using a certain font.
 // - lowerOverlap is a rough percentage for any text size, which allows you to calculate the height overflow (px) for some alphanumeric characters when using a certain font.
-// "Arial","Baloo","Calibri","Comic Sans MS","Consolas","Courier New","Droid Sans","Droid Serif","Fredoka One","Georgia","Impact","Times New Roman","Trebuchet MS","Verdana"
 export const Font = {
     ARIAL: { name: 'Arial', hPerc: 0.78, lowerOverlap: 0.03 },
     AVERIA: { name: 'Averia Gruesa', hPerc: 0.76, lowerOverlap: 0.03 },
@@ -104,131 +103,131 @@ export const FontLoader = {
   }
 };
 
-// --- Funciones internas ---
-const getPointsFromAngle = (angle, center, w, h) => {
-    var centerX = typeof center.x !== "undefined" ? parseFloat(center.x.replace('%', '')) : 0;
-    var centerY = typeof center.y !== "undefined" ? parseFloat(center.y.replace('%', '')) : 0;
-    var fAngle = Math.atan((h / 2) / (w / 2)) * (180 / Math.PI);
-    var sAngle = 90 - fAngle;
-    var percX = centerX / 100;
-    var percY = centerY / 100;
-    var cAngle, adjacent;
-    var quadrant;
+// --- Internal functions ---
+const getPointsFromAngle = (angle, center, width, height) => {
+  // Convert center of % to decimal values
+  const centerXPercent = center?.x ? parseFloat(center.x.replace('%', '')) / 100 : 0;
+  const centerYPercent = center?.y ? parseFloat(center.y.replace('%', '')) / 100 : 0;
 
-    if (angle >= 360) {
-        angle = angle - (360 * Math.floor(angle / 360));
-    }
+  const halfWidth = width / 2;
+  const halfHeight = height / 2;
 
-    if (angle >= 270) {
-        cAngle = angle - 270;
-        quadrant = 4;
-    }
-    else if (angle >= 180) {
-        cAngle = angle - 180;
-        quadrant = 3;
-    }
-    else if (angle >= 90) {
-        cAngle = angle - 90;
-        quadrant = 2;
-    }
-    else {
-        cAngle = angle;
-        quadrant = 1;
-    }
+  // Critical angle separating width/height in the circle
+  const fovAngle = Math.atan(halfHeight / halfWidth) * (180 / Math.PI);
+  const altFovAngle = 90 - fovAngle;
 
-    var pM = { x: w / 2, y: h / 2 }; // Midpoint
-    var a1;
-    if (quadrant == 1 || quadrant == 3) {
-        if (cAngle < fAngle) {
-            adjacent = pM.x;
-            a1 = cAngle;
-        }
-        else {
-            adjacent = pM.y;
-            a1 = 90 - cAngle;
-        }
-    }
-    else {//if(quadrant==2 || quadrant==4)
-        if (cAngle < sAngle) {
-            adjacent = pM.y;
-            a1 = cAngle;
-        }
-        else {
-            adjacent = pM.x;
-            a1 = 90 - cAngle;
-        }
-    }
+  // Ensure angle within 0–360°
+  const normalizedAngle = angle % 360;
 
-    var opposite = Math.tan(a1 / (180 / Math.PI)) * adjacent;
-    var x0, y0, x1, y1;
+  // Determine quadrant and relative angle
+  let quadrant = 1;
+  let angleInQuadrant = normalizedAngle;
 
-    switch (quadrant) {
-        case 1:
-            if (cAngle < fAngle) {
-                x0 = pM.x - adjacent;
-                y0 = pM.y + opposite;
-                x1 = pM.x + adjacent;
-                y1 = pM.y - opposite;
-            }
-            else {
-                x0 = pM.x - opposite;
-                y0 = pM.y + adjacent;
-                x1 = pM.x + opposite;
-                y1 = pM.y - adjacent;
-            }
-            x0 = x0 + (w * percX);
-            y0 = y0 - (h * percY);
-            break;
-        case 2:
-            if (cAngle < sAngle) {
-                x0 = pM.x + opposite;
-                y0 = pM.y + adjacent;
-                x1 = pM.x - opposite;
-                y1 = pM.y - adjacent;
-            }
-            else {
-                x0 = pM.x + adjacent;
-                y0 = pM.y + opposite;
-                x1 = pM.x - adjacent;
-                y1 = pM.y - opposite;
-            }
-            x0 = x0 - (w * percX);
-            y0 = y0 - (h * percY);
-            break;
-        case 3:
-            if (cAngle < fAngle) {
-                x0 = pM.x + adjacent;
-                y0 = pM.y - opposite;
-                x1 = pM.x - adjacent;
-                y1 = pM.y + opposite;
-            }
-            else {
-                x0 = pM.x + opposite;
-                y0 = pM.y - adjacent;
-                x1 = pM.x - opposite;
-                y1 = pM.y + adjacent;
-            }
-            x0 = x0 - (w * percX);
-            y0 = y0 + (h * percY);
-            break;
-        case 4:
-            if (cAngle < sAngle) {
-                x0 = pM.x - opposite;
-                y0 = pM.y - adjacent;
-                x1 = pM.x + opposite;
-                y1 = pM.y + adjacent;
-            }
-            else {
-                x0 = pM.x - adjacent;
-                y0 = pM.y - opposite;
-                x1 = pM.x + adjacent;
-                y1 = pM.y + opposite;
-            }
-            x0 = x0 + (w * percX);
-            y0 = y0 + (h * percY);
-            break;
+  if (normalizedAngle >= 270) {
+    angleInQuadrant = normalizedAngle - 270;
+    quadrant = 4;
+  } else if (normalizedAngle >= 180) {
+    angleInQuadrant = normalizedAngle - 180;
+    quadrant = 3;
+  } else if (normalizedAngle >= 90) {
+    angleInQuadrant = normalizedAngle - 90;
+    quadrant = 2;
+  }
+
+  // Determine adjacent side and acute angle (to be used with tangent)
+  let adjacent, innerAngleDeg;
+
+  const inQuadrant13 = quadrant === 1 || quadrant === 3;
+  if (inQuadrant13) {
+    if (angleInQuadrant < fovAngle) {
+      adjacent = halfWidth;
+      innerAngleDeg = angleInQuadrant;
+    } else {
+      adjacent = halfHeight;
+      innerAngleDeg = 90 - angleInQuadrant;
     }
-    return { x0: x0, y0: y0, x1: x1, y1: y1 };
+  } else {
+    if (angleInQuadrant < altFovAngle) {
+      adjacent = halfHeight;
+      innerAngleDeg = angleInQuadrant;
+    } else {
+      adjacent = halfWidth;
+      innerAngleDeg = 90 - angleInQuadrant;
+    }
+  }
+
+  const opposite = Math.tan(innerAngleDeg * (Math.PI / 180)) * adjacent;
+
+  // Coordinates of a symmetrical line with respect to the center
+  let x0, y0, x1, y1;
+
+  switch (quadrant) {
+    case 1:
+      if (angleInQuadrant < fovAngle) {
+        x0 = halfWidth - adjacent;
+        y0 = halfHeight + opposite;
+        x1 = halfWidth + adjacent;
+        y1 = halfHeight - opposite;
+      } else {
+        x0 = halfWidth - opposite;
+        y0 = halfHeight + adjacent;
+        x1 = halfWidth + opposite;
+        y1 = halfHeight - adjacent;
+      }
+      x0 += width * centerXPercent;
+      y0 -= height * centerYPercent;
+      break;
+
+    case 2:
+      if (angleInQuadrant < altFovAngle) {
+        x0 = halfWidth + opposite;
+        y0 = halfHeight + adjacent;
+        x1 = halfWidth - opposite;
+        y1 = halfHeight - adjacent;
+      } else {
+        x0 = halfWidth + adjacent;
+        y0 = halfHeight + opposite;
+        x1 = halfWidth - adjacent;
+        y1 = halfHeight - opposite;
+      }
+      x0 -= width * centerXPercent;
+      y0 -= height * centerYPercent;
+      break;
+
+    case 3:
+      if (angleInQuadrant < fovAngle) {
+        x0 = halfWidth + adjacent;
+        y0 = halfHeight - opposite;
+        x1 = halfWidth - adjacent;
+        y1 = halfHeight + opposite;
+      } else {
+        x0 = halfWidth + opposite;
+        y0 = halfHeight - adjacent;
+        x1 = halfWidth - opposite;
+        y1 = halfHeight + adjacent;
+      }
+      x0 -= width * centerXPercent;
+      y0 += height * centerYPercent;
+      break;
+
+    case 4:
+      if (angleInQuadrant < altFovAngle) {
+        x0 = halfWidth - opposite;
+        y0 = halfHeight - adjacent;
+        x1 = halfWidth + opposite;
+        y1 = halfHeight + adjacent;
+      } else {
+        x0 = halfWidth - adjacent;
+        y0 = halfHeight - opposite;
+        x1 = halfWidth + adjacent;
+        y1 = halfHeight + opposite;
+      }
+      x0 += width * centerXPercent;
+      y0 += height * centerYPercent;
+      break;
+  }
+
+  return { x0, y0, x1, y1 };
 };
 
 const ImageCache = {};
@@ -252,6 +251,23 @@ const getImgCopy = (imgName, width, height) => {
         result = ImageCache[imgSize][imgName];
     }
     return result;
+};
+
+export const drawable2Image = (drawable, type, callback) => {
+    const canvas = document.createElement("canvas");
+    canvas.width = drawable.width;
+    canvas.height = drawable.height;
+
+    drawable.ctx = canvas.getContext("2d");
+    drawable.build();
+
+    const img = new Image();
+    if(typeof callback !== 'undefined')
+    {
+    	img.onload = callback;
+    }
+    img.src = canvas.toDataURL(type);
+    return img;
 };
 
 const cloneJSON = (source) => {
@@ -301,6 +317,12 @@ export function Drawable(width = 0, height = 0, x = 0, y = 0) {
 
   const draw = () => {
     for (let item of this.items) {
+        if(typeof item.angle !== 'undefined') {
+            this.ctx.save();
+            this.ctx.translate(item.x + (item.width/2), item.y + (item.height/2));
+            this.ctx.rotate(item.angle * (Math.PI / 180)); // degrees to radians
+        }
+
         if (typeof item.color !== 'undefined') {
             this.ctx.fillStyle = item.color;
         }
@@ -462,7 +484,10 @@ export function Drawable(width = 0, height = 0, x = 0, y = 0) {
                 }
             }
             else {
-                if (item.width !== 'undefined' && typeof item.height !== 'undefined') {
+                if(typeof item.angle !== 'undefined') {
+                    this.ctx.drawImage(item.data, (-item.width/2), (-item.height/2), item.width, item.height);
+                }
+                else if (item.width !== 'undefined' && typeof item.height !== 'undefined') {
                     this.ctx.drawImage(item.data, item.x, item.y, item.width, item.height);
                 }
                 else {
@@ -484,17 +509,21 @@ export function Drawable(width = 0, height = 0, x = 0, y = 0) {
         if (typeof item.shadow !== 'undefined') {
             removeShadow();
         }
+
+        if(typeof item.angle !== 'undefined') {
+            this.ctx.restore();
+        }
     }
     this.width = tWidth > this.width ? tWidth : this.width;
     this.height = tHeight > this.height ? tHeight : this.height;
   };
 
   this.clear = () => {
-    this.ctx.clearRect(this.x, this.y, this.width, this.height);
+    this.ctx.clearRect(this.x-2, this.y-2, this.width+4, this.height+4);
   };
 
   const animation = () => {
-    const next = this.newState();
+    const next = this.transform();
     this.clear();
     this.update();
     draw();
@@ -505,26 +534,32 @@ export function Drawable(width = 0, height = 0, x = 0, y = 0) {
     this.clear();
     this.update();
     draw();
-    if (this.newState()) requestAnimationFrame(() => animationFrame());
+    if (this.transform()) window.requestAnimationFrame(() => animationFrame());
   };
 
   this.stop = () => clearInterval(this.interval);
 
-  this.build = (msInterval) => {
+  this.build = () => {
     if (this.onFirstBuild) {
       this.onFirstBuild();
       delete this.onFirstBuild;
     }
-    if (this.newState) {
-      if (msInterval) this.interval = setInterval(animation, msInterval);
-      else requestAnimationFrame(() => animationFrame());
-    } else {
-      this.update();
-      draw();
-    }
+
+    this.update();
+    draw();
+
     if (this.onPostBuild) {
       this.onPostBuild();
       delete this.onPostBuild;
+    }
+  };
+
+  this.animate = (msInterval) => {
+    if (this.transform) {
+      if (msInterval) this.interval = setInterval(animation, msInterval);
+      else window.requestAnimationFrame(() => animationFrame());
+    } else {
+      this.build();
     }
   };
 } // End Drawable
