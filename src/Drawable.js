@@ -2,255 +2,254 @@
 
 // --- Exportable constants ---
 export const Shape = {
-  LINE: 'LINE',
-  OVAL: 'OVAL',
-  RECTANGLE: 'RECT'
+    LINE: 'LINE',
+    OVAL: 'OVAL',
+    RECTANGLE: 'RECT'
 };
 
 export const Gradient = {
-  RADIAL_GRADIENT: 'R_G',
-  LINEAR_GRADIENT: 'L_G'
+    RADIAL_GRADIENT: 'R_G',
+    LINEAR_GRADIENT: 'L_G'
 };
 
 export const Alignment = {
-  TOP: 'A_T',
-  BOTTOM: 'A_B',
-  LEFT: 'A_L',
-  RIGHT: 'A_R',
-  CENTER: 'A_C'
+    TOP: 'A_T',
+    BOTTOM: 'A_B',
+    LEFT: 'A_L',
+    RIGHT: 'A_R',
+    CENTER: 'A_C'
 };
 
 export const Orientation = {
-  VERTICAL: 'O_V',
-  HORIZONTAL: 'O_H'
+    VERTICAL: 'O_V',
+    HORIZONTAL: 'O_H'
 };
+
+const DHP = 0.75; // Default height percentage
+const DLO = 0.03; // Default lower overlap
 
 // - hPerc is an approximate percentage for any text size, which allows you to calculate the height (px) that alphanumeric characters will have when using a certain font.
 // - lowerOverlap is a rough percentage for any text size, which allows you to calculate the height overflow (px) for some alphanumeric characters when using a certain font.
 export const Font = {
-    ARIAL: { name: 'Arial', hPerc: 0.78, lowerOverlap: 0.03 },
-    AVERIA: { name: 'Averia Gruesa', hPerc: 0.76, lowerOverlap: 0.03 },
-    BALOO: { name: 'Baloo', hPerc: 0.69, lowerOverlap: 0.03 },
-    BEBAS_NEUE: { name: 'Bebas Neue', hPerc: 0.75, lowerOverlap: 0.03 },
-    BUTCHERMAN: { name: 'Butcherman', hPerc: 0.77, lowerOverlap: 0.05 },
-    CALIBRI: { name: 'Calibri', hPerc: 0.69, lowerOverlap: 0.03 },
-    COMIC_SANS: { name: 'Comic Sans MS', hPerc: 0.78, lowerOverlap: 0.03 },
-    CONSOLAS: { name: 'Consolas', hPerc: 0.69, lowerOverlap: 0.03 },
-    COURIER_NEW: { name: 'Courier New', hPerc: 0.65, lowerOverlap: 0.03 },
-    CRASH_NUMB: { name: 'Crash Numbering Serif', hPerc: 0.74, lowerOverlap: 0.03 },
-    CREEPSTER: { name: 'Creepster', hPerc: 0.76, lowerOverlap: 0.03 },
-    DROID_SANS: { name: 'Droid Sans', hPerc: 0.73, lowerOverlap: 0.03 },
-    DROID_SERIF: { name: 'Droid Serif', hPerc: 0.73, lowerOverlap: 0.03 },
-    EATER: { name: 'Eater', hPerc: 0.85, lowerOverlap: 0.04 },
-    FLAVORS: { name: 'Flavors', hPerc: 0.78, lowerOverlap: 0.03 },
-    FREDOKA_ONE: { name: 'Fredoka One', hPerc: 0.76, lowerOverlap: 0.03 },
-    GEORGIA: { name: 'Georgia', hPerc: 0.75, lowerOverlap: 0.03 },
-    GOCHI_HAND: { name: 'Gochi Hand', hPerc: 0.59, lowerOverlap: 0.03 },
-    IMPACT: { name: 'Impact', hPerc: 0.83, lowerOverlap: 0.03 },
-    MOUNT_CHRIST: { name: 'Mountains of Christmas', hPerc: 0.83, lowerOverlap: 0.06 },
-    RAMABHADRA: { name: 'Ramabhadra', hPerc: 0.76, lowerOverlap: 0.03 },
-    TIMES_NEW_R: { name: 'Times New Roman', hPerc: 0.75, lowerOverlap: 0.03 },
-    TREBUCHET: { name: 'Trebuchet MS', hPerc: 0.75, lowerOverlap: 0.03 },
-    VERDANA: { name: 'Verdana', hPerc: 0.77, lowerOverlap: 0.03 },
+    ARIAL: {name: 'Arial', hPerc: 0.78, lowerOverlap: DLO},
+    AVERIA: {name: 'Averia Gruesa', hPerc: 0.76, lowerOverlap: DLO},
+    BALOO: {name: 'Baloo', hPerc: 0.69, lowerOverlap: DLO},
+    BEBAS_NEUE: {name: 'Bebas Neue', hPerc: DHP, lowerOverlap: DLO},
+    BUTCHERMAN: {name: 'Butcherman', hPerc: 0.77, lowerOverlap: 0.05},
+    CALIBRI: {name: 'Calibri', hPerc: 0.69, lowerOverlap: DLO},
+    COMIC_SANS: {name: 'Comic Sans MS', hPerc: 0.78, lowerOverlap: DLO},
+    CONSOLAS: {name: 'Consolas', hPerc: 0.69, lowerOverlap: DLO},
+    COURIER_NEW: {name: 'Courier New', hPerc: 0.65, lowerOverlap: DLO},
+    CRASH_NUMB: {name: 'Crash Numbering Serif', hPerc: 0.74, lowerOverlap: DLO},
+    CREEPSTER: {name: 'Creepster', hPerc: 0.76, lowerOverlap: DLO},
+    DROID_SANS: {name: 'Droid Sans', hPerc: 0.73, lowerOverlap: DLO},
+    DROID_SERIF: {name: 'Droid Serif', hPerc: 0.73, lowerOverlap: DLO},
+    EATER: {name: 'Eater', hPerc: 0.85, lowerOverlap: 0.04},
+    FLAVORS: {name: 'Flavors', hPerc: 0.78, lowerOverlap: DLO},
+    FREDOKA_ONE: {name: 'Fredoka One', hPerc: 0.76, lowerOverlap: DLO},
+    GEORGIA: {name: 'Georgia', hPerc: DHP, lowerOverlap: DLO},
+    GOCHI_HAND: {name: 'Gochi Hand', hPerc: 0.59, lowerOverlap: DLO},
+    IMPACT: {name: 'Impact', hPerc: 0.83, lowerOverlap: DLO},
+    MOUNT_CHRIST: {name: 'Mountains of Christmas', hPerc: 0.83, lowerOverlap: 0.06},
+    RAMABHADRA: {name: 'Ramabhadra', hPerc: 0.76, lowerOverlap: DLO},
+    TIMES_NEW_R: {name: 'Times New Roman', hPerc: DHP, lowerOverlap: DLO},
+    TREBUCHET: {name: 'Trebuchet MS', hPerc: DHP, lowerOverlap: DLO},
+    VERDANA: {name: 'Verdana', hPerc: 0.77, lowerOverlap: DLO},
 
-  values: function () {
-    return Object.values(this).filter(f => typeof f !== 'function');
-  },
+    values: function () {
+        return Object.values(this).filter(f => typeof f !== 'function');
+    },
 
-  getFonts: function () {
-    return this.values().map(f => f.name);
-  },
+    getFonts: function () {
+        return this.values().map(f => f.name);
+    },
 
-  keys: function () {
-    return Object.keys(this).filter(k => typeof this[k] !== 'function');
-  },
+    keys: function () {
+        return Object.keys(this).filter(k => typeof this[k] !== 'function');
+    },
 
-  getKeyByName: function (name) {
-    return this.keys().find(k => this[k].name === name);
-  }
+    getKeyByName: function (name) {
+        return this.keys().find(k => this[k].name === name);
+    }
 };
 
 export const FontLoader = {
-  load: function (info) {
-    const fonts = info.families;
-    const width = 150, height = 25;
-    const canvas = document.createElement("canvas");
-    canvas.width = width;
-    canvas.height = height;
+    load: function (info) {
+        const fonts = info.families;
+        const width = 150, height = 25;
+        const canvas = document.createElement("canvas");
+        canvas.width = width;
+        canvas.height = height;
 
-    const loadFont = function (font) {
-      const text = new Drawable(width, height);
-      text.ctx = canvas.getContext("2d");
-      text.update = function () {
-        this.items = [{
-          text: "AEIOUBCDFGHIJ/0123456789",
-          font: font,
-          size: 20,
-          color: "#FFFFFF",
-          textAlign: "left",
-          vAlign: "top",
-          x: 0,
-          y: 0
-        }];
-      };
-      text.onPostBuild = function () {
-        if (fonts.length > 0) loadFont(fonts.pop());
-        else info.active();
-      };
-      text.build();
-    };
-    loadFont(fonts.pop());
-  }
+        const loadFont = function (font) {
+            const text = new Drawable(width, height);
+            text.ctx = canvas.getContext("2d");
+            text.update = function () {
+                this.items = [{
+                    text: "AEIOUBCDFGHIJ/0123456789",
+                    font: {family: font, size: 20},
+                    color: "#FFFFFF",
+                    textAlign: "left",
+                    vAlign: "top",
+                    x: 0,
+                    y: 0
+                }];
+            };
+            text.onPostBuild = function () {
+                if (fonts.length > 0) loadFont(fonts.pop());
+                else info.active();
+            };
+            text.build();
+        };
+        loadFont(fonts.pop());
+    }
 };
 
 // --- Internal functions ---
 const getPointsFromAngle = (angle, center, width, height) => {
-  // Convert center of % to decimal values
-  const centerXPercent = center?.x ? parseFloat(center.x.replace('%', '')) / 100 : 0;
-  const centerYPercent = center?.y ? parseFloat(center.y.replace('%', '')) / 100 : 0;
+    // Convert center of % to decimal values
+    const centerXPercent = center?.x ? parseFloat(center.x.replace('%', '')) / 100 : 0;
+    const centerYPercent = center?.y ? parseFloat(center.y.replace('%', '')) / 100 : 0;
 
-  const halfWidth = width / 2;
-  const halfHeight = height / 2;
+    const halfWidth = width / 2;
+    const halfHeight = height / 2;
 
-  // Critical angle separating width/height in the circle
-  const fovAngle = Math.atan(halfHeight / halfWidth) * (180 / Math.PI);
-  const altFovAngle = 90 - fovAngle;
+    // Critical angle separating width/height in the circle
+    const fovAngle = Math.atan(halfHeight / halfWidth) * (180 / Math.PI);
+    const altFovAngle = 90 - fovAngle;
 
-  // Ensure angle within 0–360°
-  const normalizedAngle = angle % 360;
+    // Ensure angle within 0–360°
+    const normalizedAngle = angle % 360;
 
-  // Determine quadrant and relative angle
-  let quadrant = 1;
-  let angleInQuadrant = normalizedAngle;
+    // Determine quadrant and relative angle
+    let quadrant = 1;
+    let angleInQuadrant = normalizedAngle;
 
-  if (normalizedAngle >= 270) {
-    angleInQuadrant = normalizedAngle - 270;
-    quadrant = 4;
-  } else if (normalizedAngle >= 180) {
-    angleInQuadrant = normalizedAngle - 180;
-    quadrant = 3;
-  } else if (normalizedAngle >= 90) {
-    angleInQuadrant = normalizedAngle - 90;
-    quadrant = 2;
-  }
-
-  // Determine adjacent side and acute angle (to be used with tangent)
-  let adjacent, innerAngleDeg;
-
-  const inQuadrant13 = quadrant === 1 || quadrant === 3;
-  if (inQuadrant13) {
-    if (angleInQuadrant < fovAngle) {
-      adjacent = halfWidth;
-      innerAngleDeg = angleInQuadrant;
-    } else {
-      adjacent = halfHeight;
-      innerAngleDeg = 90 - angleInQuadrant;
+    if (normalizedAngle >= 270) {
+        angleInQuadrant = normalizedAngle - 270;
+        quadrant = 4;
+    } else if (normalizedAngle >= 180) {
+        angleInQuadrant = normalizedAngle - 180;
+        quadrant = 3;
+    } else if (normalizedAngle >= 90) {
+        angleInQuadrant = normalizedAngle - 90;
+        quadrant = 2;
     }
-  } else {
-    if (angleInQuadrant < altFovAngle) {
-      adjacent = halfHeight;
-      innerAngleDeg = angleInQuadrant;
+
+    // Determine adjacent side and acute angle (to be used with tangent)
+    let adjacent, innerAngleDeg;
+
+    const inQuadrant13 = quadrant === 1 || quadrant === 3;
+    if (inQuadrant13) {
+        if (angleInQuadrant < fovAngle) {
+            adjacent = halfWidth;
+            innerAngleDeg = angleInQuadrant;
+        } else {
+            adjacent = halfHeight;
+            innerAngleDeg = 90 - angleInQuadrant;
+        }
     } else {
-      adjacent = halfWidth;
-      innerAngleDeg = 90 - angleInQuadrant;
+        if (angleInQuadrant < altFovAngle) {
+            adjacent = halfHeight;
+            innerAngleDeg = angleInQuadrant;
+        } else {
+            adjacent = halfWidth;
+            innerAngleDeg = 90 - angleInQuadrant;
+        }
     }
-  }
 
-  const opposite = Math.tan(innerAngleDeg * (Math.PI / 180)) * adjacent;
+    const opposite = Math.tan(innerAngleDeg * (Math.PI / 180)) * adjacent;
 
-  // Coordinates of a symmetrical line with respect to the center
-  let x0, y0, x1, y1;
+    // Coordinates of a symmetrical line with respect to the center
+    let x0, y0, x1, y1;
 
-  switch (quadrant) {
-    case 1:
-      if (angleInQuadrant < fovAngle) {
-        x0 = halfWidth - adjacent;
-        y0 = halfHeight + opposite;
-        x1 = halfWidth + adjacent;
-        y1 = halfHeight - opposite;
-      } else {
-        x0 = halfWidth - opposite;
-        y0 = halfHeight + adjacent;
-        x1 = halfWidth + opposite;
-        y1 = halfHeight - adjacent;
-      }
-      x0 += width * centerXPercent;
-      y0 -= height * centerYPercent;
-      break;
+    switch (quadrant) {
+        case 1:
+            if (angleInQuadrant < fovAngle) {
+                x0 = halfWidth - adjacent;
+                y0 = halfHeight + opposite;
+                x1 = halfWidth + adjacent;
+                y1 = halfHeight - opposite;
+            } else {
+                x0 = halfWidth - opposite;
+                y0 = halfHeight + adjacent;
+                x1 = halfWidth + opposite;
+                y1 = halfHeight - adjacent;
+            }
+            x0 += width * centerXPercent;
+            y0 -= height * centerYPercent;
+            break;
 
-    case 2:
-      if (angleInQuadrant < altFovAngle) {
-        x0 = halfWidth + opposite;
-        y0 = halfHeight + adjacent;
-        x1 = halfWidth - opposite;
-        y1 = halfHeight - adjacent;
-      } else {
-        x0 = halfWidth + adjacent;
-        y0 = halfHeight + opposite;
-        x1 = halfWidth - adjacent;
-        y1 = halfHeight - opposite;
-      }
-      x0 -= width * centerXPercent;
-      y0 -= height * centerYPercent;
-      break;
+        case 2:
+            if (angleInQuadrant < altFovAngle) {
+                x0 = halfWidth + opposite;
+                y0 = halfHeight + adjacent;
+                x1 = halfWidth - opposite;
+                y1 = halfHeight - adjacent;
+            } else {
+                x0 = halfWidth + adjacent;
+                y0 = halfHeight + opposite;
+                x1 = halfWidth - adjacent;
+                y1 = halfHeight - opposite;
+            }
+            x0 -= width * centerXPercent;
+            y0 -= height * centerYPercent;
+            break;
 
-    case 3:
-      if (angleInQuadrant < fovAngle) {
-        x0 = halfWidth + adjacent;
-        y0 = halfHeight - opposite;
-        x1 = halfWidth - adjacent;
-        y1 = halfHeight + opposite;
-      } else {
-        x0 = halfWidth + opposite;
-        y0 = halfHeight - adjacent;
-        x1 = halfWidth - opposite;
-        y1 = halfHeight + adjacent;
-      }
-      x0 -= width * centerXPercent;
-      y0 += height * centerYPercent;
-      break;
+        case 3:
+            if (angleInQuadrant < fovAngle) {
+                x0 = halfWidth + adjacent;
+                y0 = halfHeight - opposite;
+                x1 = halfWidth - adjacent;
+                y1 = halfHeight + opposite;
+            } else {
+                x0 = halfWidth + opposite;
+                y0 = halfHeight - adjacent;
+                x1 = halfWidth - opposite;
+                y1 = halfHeight + adjacent;
+            }
+            x0 -= width * centerXPercent;
+            y0 += height * centerYPercent;
+            break;
 
-    case 4:
-      if (angleInQuadrant < altFovAngle) {
-        x0 = halfWidth - opposite;
-        y0 = halfHeight - adjacent;
-        x1 = halfWidth + opposite;
-        y1 = halfHeight + adjacent;
-      } else {
-        x0 = halfWidth - adjacent;
-        y0 = halfHeight - opposite;
-        x1 = halfWidth + adjacent;
-        y1 = halfHeight + opposite;
-      }
-      x0 += width * centerXPercent;
-      y0 += height * centerYPercent;
-      break;
-  }
+        case 4:
+            if (angleInQuadrant < altFovAngle) {
+                x0 = halfWidth - opposite;
+                y0 = halfHeight - adjacent;
+                x1 = halfWidth + opposite;
+                y1 = halfHeight + adjacent;
+            } else {
+                x0 = halfWidth - adjacent;
+                y0 = halfHeight - opposite;
+                x1 = halfWidth + adjacent;
+                y1 = halfHeight + opposite;
+            }
+            x0 += width * centerXPercent;
+            y0 += height * centerYPercent;
+            break;
+    }
 
-  return { x0, y0, x1, y1 };
+    return {x0, y0, x1, y1};
 };
 
 const ImageCache = {};
 const getImgCopy = (imgName, width, height) => {
-    var result;
     var imgSize = width + "_" + height;
     var targetImages = ImageCache[imgSize];
+    let copy;
+    if (targetImages && targetImages[imgName]) {
+        copy = targetImages[imgName];
+    }
+    return copy;
+};
 
-    if (typeof targetImages !== "undefined") {
-        if (typeof targetImages[imgName] !== "undefined") {
-            return targetImages[imgName];
-        }
-    } else {
-        ImageCache[imgSize] = {};
-    }
-    var defaultImages = ImageCache['75_75'];
-    if (typeof defaultImages[imgName] !== "undefined") {
-        ImageCache[imgSize][imgName] = cloneJSON(defaultImages[imgName]);
-        ImageCache[imgSize][imgName].w = width;
-        ImageCache[imgSize][imgName].h = height;
-        result = ImageCache[imgSize][imgName];
-    }
-    return result;
+const loadImage = (src) => {
+    return new Promise((resolve, reject) => {
+        const img = new Image();
+        img.src = src;
+        img.onload = () => resolve(img);
+        img.onerror = reject;
+    });
 };
 
 export const drawable2Image = (drawable, type, callback) => {
@@ -262,42 +261,52 @@ export const drawable2Image = (drawable, type, callback) => {
     drawable.build();
 
     const img = new Image();
-    if(typeof callback !== 'undefined')
-    {
-    	img.onload = callback;
+    if (typeof callback !== 'undefined') {
+        img.onload = callback;
     }
     img.src = canvas.toDataURL(type);
     return img;
 };
 
 const cloneJSON = (source) => {
-  if (Array.isArray(source)) return source.map(cloneJSON);
-  else if (typeof source === 'object' && source !== null) {
-    const copy = {};
-    for (const key in source) copy[key] = cloneJSON(source[key]);
-    return copy;
-  }
-  return source;
+    if (Array.isArray(source)) return source.map(cloneJSON);
+    else if (typeof source === 'object' && source !== null) {
+        const copy = {};
+        for (const key in source) copy[key] = cloneJSON(source[key]);
+        return copy;
+    }
+    return source;
 };
 
 // --- Clase principal ---
 export function Drawable(width = 0, height = 0, x = 0, y = 0) {
-  this.margin = { top: 0, left: 0, bottom: 0, right: 0 };
-  this.width = width;
-  this.height = height;
-  this.x = x;
-  this.y = y;
-  let tWidth = 0, tHeight = 0;
+    this.margin = {top: 0, left: 0, bottom: 0, right: 0};
+    this.width = width;
+    this.height = height;
+    this.x = x;
+    this.y = y;
+    let tWidth = 0, tHeight = 0;
 
     const applyFilter = (imgInfo) => {
         var canvas = document.createElement('canvas');
         var ctx = canvas.getContext('2d');
         canvas.width = imgInfo.w || imgInfo.width;
         canvas.height = imgInfo.h || imgInfo.height;
+        /*if(typeof imgInfo.angle !== 'undefined') {
+            ctx.save();
+            ctx.translate(canvas.width/2, canvas.height/2);
+            ctx.rotate(imgInfo.angle * (Math.PI / 180));
+            ctx.drawImage(imgInfo.image, -canvas.width / 2, -canvas.height / 2);
+        }
+        else {*/
         ctx.drawImage(imgInfo.image, 0, 0, canvas.width, canvas.height);
+        //}
         ctx.globalCompositeOperation = 'source-atop';
         ctx.fillStyle = imgInfo.cf || imgInfo.colorFilter;
         ctx.fillRect(0, 0, canvas.width, canvas.height);
+        /*if(typeof imgInfo.angle !== 'undefined') {
+            ctx.restore();
+        }*/
         return canvas;
     };
 
@@ -315,251 +324,318 @@ export function Drawable(width = 0, height = 0, x = 0, y = 0) {
         this.ctx.shadowBlur = shadow.blur;
     };
 
-  const draw = () => {
-    for (let item of this.items) {
-        if(typeof item.angle !== 'undefined') {
-            this.ctx.save();
-            this.ctx.translate(item.x + (item.width/2), item.y + (item.height/2));
-            this.ctx.rotate(item.angle * (Math.PI / 180)); // degrees to radians
-        }
-
-        if (typeof item.color !== 'undefined') {
-            this.ctx.fillStyle = item.color;
-        }
-        else if (typeof item.gradient !== 'undefined') {
-            const gradient = item.gradient;
-            let grd;
-            if (gradient.type == Gradient.RADIAL_GRADIENT) {
-                grd = this.ctx.createRadialGradient(
-                    gradient.center1.x,
-                    gradient.center1.y,
-                    gradient.radius1,
-                    gradient.center2.x,
-                    gradient.center2.y,
-                    gradient.radius2);
-            }
-            else if (gradient.type == Gradient.LINEAR_GRADIENT) {
-                var points = getPointsFromAngle(gradient.angle, gradient.center, item.width, item.height);
-                grd = this.ctx.createLinearGradient(
-                    points.x0 + item.x,
-                    points.y0 + item.y,
-                    points.x1 + item.x,
-                    points.y1 + item.y);
+    const draw = () => {
+        for (let item of this.items) {
+            let cStroke = false;
+            if (typeof item.angle !== 'undefined') {
+                this.ctx.save();
+                this.ctx.translate(item.x + (item.width / 2), item.y + (item.height / 2));
+                this.ctx.rotate(item.angle * (Math.PI / 180)); // degrees to radians
             }
 
-            grd.addColorStop(0, gradient.startColor);
-            if (typeof gradient.centerColor !== 'undefined') {
-                grd.addColorStop(0.5, gradient.centerColor);
-            }
-            grd.addColorStop(1, gradient.endColor);
+            if (typeof item.color !== 'undefined') {
+                this.ctx.fillStyle = item.color;
+            } else if (typeof item.gradient !== 'undefined') {
+                const gradient = item.gradient;
+                let grd;
+                if (gradient.type == Gradient.RADIAL_GRADIENT) {
+                    grd = this.ctx.createRadialGradient(
+                        gradient.center1.x,
+                        gradient.center1.y,
+                        gradient.radius1,
+                        gradient.center2.x,
+                        gradient.center2.y,
+                        gradient.radius2);
+                } else if (gradient.type == Gradient.LINEAR_GRADIENT) {
+                    var points = getPointsFromAngle(gradient.angle, gradient.center, item.width, item.height);
+                    grd = this.ctx.createLinearGradient(
+                        points.x0 + item.x,
+                        points.y0 + item.y,
+                        points.x1 + item.x,
+                        points.y1 + item.y);
+                }
 
-            this.ctx.fillStyle = grd;
-        }
+                grd.addColorStop(0, gradient.startColor);
+                if (typeof gradient.centerColor !== 'undefined') {
+                    grd.addColorStop(0.5, gradient.centerColor);
+                }
+                grd.addColorStop(1, gradient.endColor);
 
-        if (typeof item.shadow !== 'undefined') {
-            addShadow(item.shadow);
-        }
-
-        if (typeof item.text !== 'undefined') {
-            // item.y indicates the position from where the text begins to be painted
-            // this.y indicates the position reserved to start erasing the text, given that some characters overflow and also because of shadows.
-            const calcOverlap = item.size * item.font.lowerOverlap;
-            const calcHeight = item.size * item.font.hPerc;
-            const shadowBlur = typeof item.shadow !== 'undefined' ? item.shadow.blur : 0;
-            let mY = item.y - calcOverlap;
-
-            if (typeof item.lineHeight !== 'undefined') mY -= item.lineHeight;
-
-            let yAdjust;
-            if (item.vAlign == 'top') {
-                mY -= shadowBlur;
-                yAdjust = mY;
-                mY += calcHeight;
-            }
-            else if (item.vAlign == 'middle') {
-                const middle = calcHeight / 2;
-                yAdjust = mY - middle;
-                mY += middle;
-            }
-            else if (item.vAlign == 'bottom') {
-                yAdjust = mY - calcHeight;
+                this.ctx.fillStyle = grd;
             }
 
-            this.x = item.x - (calcHeight / 2);
-            this.y = yAdjust - shadowBlur - (calcHeight / 2);
+            if (typeof item.shadow !== 'undefined') {
+                addShadow(item.shadow);
+            }
 
-            this.ctx.font = item.size + 'px ' + item.font.name;
-            this.ctx.textAlign = item.textAlign;
-            this.ctx.textBaseline = 'alphabetic'; // Consistent baseline for any source and on any device.
-            this.ctx.fillText(item.text, item.x, mY);
+            if (typeof item.text !== 'undefined') {
+                // item.y indicates the position from where the text begins to be painted
+                // this.y indicates the position reserved to start erasing the text, given that some characters overflow and also because of shadows.
+                const calcOverlap = item.font.size * (item.font.family.lowerOverlap || DLO);
+                const calcHeight = item.font.size * (item.font.family.hPerc || DHP);
+                const shadowBlur = typeof item.shadow !== 'undefined' ? item.shadow.blur : 0;
+                const fontFamily = item.font.family.name || 'Arial';
+                const fontStyle = item.font.style ? `${item.font.style} ` : '';
+                const fontSize = item.font.size || 12;
+                let mY = item.y - calcOverlap;
 
-            tWidth = this.ctx.measureText(item.text).width + calcHeight;
-            //tHeight = calcHeight + calcOverlap + (shadowBlur*2) + calcHeight;
-            tHeight = calcHeight + calcOverlap + (shadowBlur * 2);
-        }
-        else if (item.shape == Shape.LINE) {
-            this.ctx.beginPath();
-            this.ctx.moveTo(item.from.x, item.from.y);
-            this.ctx.lineTo(item.to.x, item.to.y);
-        }
-        else if (item.shape == Shape.OVAL) {
-            this.ctx.beginPath();
-            this.ctx.arc(item.x, item.y, item.radius, 0, Math.PI * 2);
-            this.ctx.closePath();
-            this.ctx.fill();
-        }
-        else if (item.shape == Shape.RECTANGLE) {
-            const rx = item.x;
-            const ry = item.y;
-            const rw = item.width;
-            const rh = item.height;
+                if (typeof item.lineHeight !== 'undefined') mY -= item.lineHeight;
 
-            if (typeof item.cornerRadius !== 'undefined') {
-                const cr0 = item.cornerRadius[0] || 0;
-                const cr1 = item.cornerRadius[1] || 0;
-                const cr2 = item.cornerRadius[2] || 0;
-                const cr3 = item.cornerRadius[3] || 0;
+                let yAdjust;
+                if (item.vAlign == 'top') {
+                    mY -= shadowBlur;
+                    yAdjust = mY;
+                    mY += calcHeight;
+                } else if (item.vAlign == 'middle') {
+                    const middle = calcHeight / 2;
+                    yAdjust = mY - middle;
+                    mY += middle;
+                } else if (item.vAlign == 'bottom') {
+                    yAdjust = mY - calcHeight;
+                }
+
+                this.x = item.x - (calcHeight / 2);
+                this.y = yAdjust - shadowBlur - (calcHeight / 2);
+
+                this.ctx.font = `${fontStyle}${fontSize}px ${fontFamily}`;
+                this.ctx.textAlign = item.textAlign;
+                this.ctx.textBaseline = 'alphabetic'; // Consistent baseline for any source and on any device.
+                this.ctx.fillText(item.text, item.x, mY);
+
+                tWidth = this.ctx.measureText(item.text).width + calcHeight;
+                //tHeight = calcHeight + calcOverlap + (shadowBlur*2) + calcHeight;
+                tHeight = calcHeight + calcOverlap + (shadowBlur * 2);
+            } else if (item.shape == Shape.LINE) {
                 this.ctx.beginPath();
-                this.ctx.moveTo(rx + rw - cr1, ry);
-                this.ctx.arcTo(rx + rw, ry, rx + rw, ry + cr1, cr1);
-                this.ctx.lineTo(rx + rw, ry + rh - cr2);
-                this.ctx.arcTo(rx + rw, ry + rh, rx + rw - cr2, ry + rh, cr2);
-                this.ctx.lineTo(rx + cr3, ry + rh);
-                this.ctx.arcTo(rx, ry + rh, rx, ry + rh - cr3, cr3);
-                this.ctx.lineTo(rx, ry + cr0);
-                this.ctx.arcTo(rx, ry, rx + cr0, ry, cr0);
+                this.ctx.moveTo(item.from.x, item.from.y);
+                this.ctx.lineTo(item.to.x, item.to.y);
+            } else if (item.shape == Shape.OVAL) {
+                this.ctx.beginPath();
+                this.ctx.arc(item.x, item.y, item.radius, 0, Math.PI * 2);
                 this.ctx.closePath();
                 this.ctx.fill();
-            }
-            else {
-                this.ctx.fillRect(rx, ry, rw, rh);
-            }
-        }
-        else if (typeof item.image !== 'undefined') {
-            if (item.image == 'image/url') {
-                var imgUrl = item.url;
-                var imgName = imgUrl.substring(imgUrl.lastIndexOf("/") + 1);
-                var imgCopy = getImgCopy(imgName, item.width, item.height);
-                var imgCache = typeof imgCopy !== 'undefined';
-                if (imgCache) {
-                    if (typeof imgCopy.w !== 'undefined' && typeof imgCopy.h !== 'undefined') {
-                        if (typeof item.colorFilter !== 'undefined') {
-                            imgCopy.cf = item.colorFilter;
-                            this.ctx.drawImage(applyFilter(imgCopy), item.x, item.y);
-                        }
-                        else {
-                            this.ctx.drawImage(imgCopy.image, item.x, item.y, imgCopy.w, imgCopy.h);
-                        }
+            } else if (item.shape == Shape.RECTANGLE) {
+                const rx = item.x;
+                const ry = item.y;
+                const rw = item.width;
+                const rh = item.height;
+
+                if (typeof item.cornerRadius !== 'undefined') {
+                    const cr0 = item.cornerRadius[0] || 0;
+                    const cr1 = item.cornerRadius[1] || 0;
+                    const cr2 = item.cornerRadius[2] || 0;
+                    const cr3 = item.cornerRadius[3] || 0;
+                    this.ctx.beginPath();
+                    this.ctx.moveTo(rx + rw - cr1, ry);
+                    this.ctx.arcTo(rx + rw, ry, rx + rw, ry + cr1, cr1);
+                    this.ctx.lineTo(rx + rw, ry + rh - cr2);
+                    this.ctx.arcTo(rx + rw, ry + rh, rx + rw - cr2, ry + rh, cr2);
+                    this.ctx.lineTo(rx + cr3, ry + rh);
+                    this.ctx.arcTo(rx, ry + rh, rx, ry + rh - cr3, cr3);
+                    this.ctx.lineTo(rx, ry + cr0);
+                    this.ctx.arcTo(rx, ry, rx + cr0, ry, cr0);
+                    this.ctx.closePath();
+                    this.ctx.fill();
+                } else {
+                    this.ctx.fillRect(rx, ry, rw, rh);
+
+                    if (typeof item.stroke !== 'undefined') {
+                        this.ctx.lineWidth = item.stroke.width;
+                        this.ctx.strokeStyle = item.stroke.color;
+                        this.ctx.strokeRect(rx, ry, rw, rh);
+                        cStroke = true;
                     }
-                    else {
-                        this.ctx.drawImage(imgCopy.image, item.x, item.y);
-                    }
-                    if (typeof item.onLoadImg !== "undefined") item.onLoadImg();
                 }
-                else {
-                    const img = new Image();
-                    img.onload = function (n, w, h) {
-                        var imgInfo = { w: w, h: h };
-                        var imgSize = w + "_" + h;
-                        if (typeof w !== 'undefined' && typeof h !== 'undefined') {
+            } else if (typeof item.image !== 'undefined') {
+                if (item.image == 'image/url') {
+                    var imgUrl = item.url;
+                    var imgName = imgUrl.substring(imgUrl.lastIndexOf("/") + 1);
+                    var imgCopy = getImgCopy(imgName, item.width, item.height);
+                    if (imgCopy) {
+                        console.log("cache");
+                        if (typeof imgCopy.w !== 'undefined' && typeof imgCopy.h !== 'undefined') {
+
+                            let posX = item.x;
+                            let posY = item.y;
+
+                            if (typeof item.angle !== 'undefined') {
+                                posX = -imgCopy.w / 2;
+                                posY = -imgCopy.h / 2;
+                            }
+
+                            if (typeof item.colorFilter !== 'undefined') {
+                                imgCopy.cf = item.colorFilter;
+                                this.ctx.drawImage(applyFilter(imgCopy), posX, posY);
+                            } else {
+                                this.ctx.drawImage(imgCopy.image, posX, posY, imgCopy.w, imgCopy.h);
+                            }
+                        } else {
+                            this.ctx.drawImage(imgCopy.image, item.x, item.y);
+                        }
+                        if (typeof item.onLoadImg !== "undefined") item.onLoadImg();
+                    } else {
+                        console.log("new");
+                        const img = new Image();
+                        img.onload = function (n, w, h) {
+                            if (typeof item.angle !== 'undefined') {
+                                this.ctx.save();
+                                this.ctx.translate(item.x + (item.width / 2), item.y + (item.height / 2));
+                                this.ctx.rotate(item.angle * (Math.PI / 180)); // degrees to radians
+                            }
+                            var imgInfo = {w: w, h: h};
+                            var imgSize = w + "_" + h;
+                            if (typeof w !== 'undefined' && typeof h !== 'undefined') {
+
+                                let posX = item.x;
+                                let posY = item.y;
+
+                                if (typeof item.angle !== 'undefined') {
+                                    posX = -w / 2;
+                                    posY = -h / 2;
+                                }
+
+                                if (typeof item.colorFilter !== 'undefined') {
+                                    item.image = img;
+                                    imgInfo.cf = item.colorFilter;
+                                    this.ctx.drawImage(applyFilter(item), posX, posY);
+                                } else {
+                                    this.ctx.drawImage(img, posX, posY, w, h);
+                                }
+
+                                imgInfo.image = img;
+                            } else {
+                                imgInfo.image = img;
+                                this.ctx.drawImage(img, item.x, item.y);
+                            }
+
+                            if (typeof item.angle !== 'undefined') {
+                                this.ctx.restore();
+                            }
+
+                            if (typeof ImageCache[imgSize] === "undefined") ImageCache[imgSize] = {};
+                            ImageCache[imgSize][n] = imgInfo;
+                            if (item.onLoadImg) item.onLoadImg();
+                        }.bind(this, imgName, item.width, item.height);
+                        img.src = item.url;
+                        /*const img = await loadImage(item.url);
+                        if(typeof item.angle !== 'undefined') {
+                            this.ctx.save();
+                            this.ctx.translate(item.x + (item.width/2), item.y + (item.height/2));
+                            this.ctx.rotate(item.angle * (Math.PI / 180)); // degrees to radians
+                        }
+                        var imgInfo = { w: item.width, h: item.height };
+                        var imgSize = item.width + "_" + item.height;
+                        if (typeof item.width !== 'undefined' && typeof item.height !== 'undefined') {
+
+                            let posX = item.x;
+                            let posY = item.y;
+
+                            if(typeof item.angle !== 'undefined') {
+                                posX = -item.width/2;
+                                posY = -item.width/2;
+                            }
+
                             if (typeof item.colorFilter !== 'undefined') {
                                 item.image = img;
                                 imgInfo.cf = item.colorFilter;
-                                this.ctx.drawImage(applyFilter(item), item.x, item.y);
+                                this.ctx.drawImage(applyFilter(item), posX, posY);
                             }
                             else {
-                                this.ctx.drawImage(img, item.x, item.y, w, h);
+                                this.ctx.drawImage(img, posX, posY, item.width, item.height);
                             }
+
                             imgInfo.image = img;
                         }
                         else {
                             imgInfo.image = img;
                             this.ctx.drawImage(img, item.x, item.y);
                         }
-                        if (typeof ImageCache[imgSize] === undefined) ImageCache[imgSize] = {};
-                        ImageCache[imgSize][n] = imgInfo;
-                        if (typeof item.onLoadImg !== "undefined") item.onLoadImg();
-                    }.bind(this, imgName, item.width, item.height);
-                    img.src = item.url;
+
+                        if(typeof item.angle !== 'undefined') {
+                            this.ctx.restore();
+                        }
+
+                        if (typeof ImageCache[imgSize] === "undefined") ImageCache[imgSize] = {};
+                        ImageCache[imgSize][imgName] = imgInfo;
+                        if (item.onLoadImg) item.onLoadImg();*/
+                    }
+                } else {
+                    if (item.width !== 'undefined' && typeof item.height !== 'undefined') {
+                        if (typeof item.angle !== 'undefined') {
+                            this.ctx.drawImage(item.data, (-item.width / 2), (-item.height / 2), item.width, item.height);
+                        } else {
+                            this.ctx.drawImage(item.data, item.x, item.y, item.width, item.height);
+                        }
+                    } else {
+                        this.ctx.drawImage(item.data, item.x, item.y);
+                    }
                 }
             }
-            else {
-                if(typeof item.angle !== 'undefined') {
-                    this.ctx.drawImage(item.data, (-item.width/2), (-item.height/2), item.width, item.height);
-                }
-                else if (item.width !== 'undefined' && typeof item.height !== 'undefined') {
-                    this.ctx.drawImage(item.data, item.x, item.y, item.width, item.height);
-                }
-                else {
-                    this.ctx.drawImage(item.data, item.x, item.y);
-                }
+
+            if (typeof item.stroke !== 'undefined' && !cStroke) {
+                this.ctx.lineWidth = item.stroke.width;
+                this.ctx.strokeStyle = item.stroke.color;
+                this.ctx.stroke();
+            }
+
+            if (typeof item.posDraw !== 'undefined') {
+                item.posDraw();
+            }
+
+            if (typeof item.shadow !== 'undefined') {
+                removeShadow();
+            }
+
+            if (typeof item.angle !== 'undefined') {
+                this.ctx.restore();
             }
         }
+        this.width = tWidth > this.width ? tWidth : this.width;
+        this.height = tHeight > this.height ? tHeight : this.height;
+    };
 
-        if (typeof item.stroke !== 'undefined') {
-            this.ctx.lineWidth = item.stroke.width;
-            this.ctx.strokeStyle = item.stroke.color;
-            this.ctx.stroke();
+    this.clear = () => {
+        this.ctx.clearRect(this.x - 2, this.y - 2, this.width + 4, this.height + 4);
+    };
+
+    const animation = () => {
+        const next = this.transform();
+        this.clear();
+        this.update();
+        draw();
+        if (!next) this.stop();
+    };
+
+    const animationFrame = () => {
+        this.clear();
+        this.update();
+        draw();
+        if (this.transform()) window.requestAnimationFrame(() => animationFrame());
+    };
+
+    this.stop = () => clearInterval(this.interval);
+
+    this.build = () => {
+        if (this.onFirstBuild) {
+            this.onFirstBuild();
+            delete this.onFirstBuild;
         }
 
-        if (typeof item.posDraw !== 'undefined') {
-            item.posDraw();
+        this.update();
+        draw();
+
+        if (this.onPostBuild) {
+            this.onPostBuild();
+            delete this.onPostBuild;
         }
+    };
 
-        if (typeof item.shadow !== 'undefined') {
-            removeShadow();
+    this.animate = (msInterval) => {
+        if (this.transform) {
+            if (msInterval) this.interval = setInterval(animation, msInterval);
+            else window.requestAnimationFrame(() => animationFrame());
+        } else {
+            this.build();
         }
-
-        if(typeof item.angle !== 'undefined') {
-            this.ctx.restore();
-        }
-    }
-    this.width = tWidth > this.width ? tWidth : this.width;
-    this.height = tHeight > this.height ? tHeight : this.height;
-  };
-
-  this.clear = () => {
-    this.ctx.clearRect(this.x-2, this.y-2, this.width+4, this.height+4);
-  };
-
-  const animation = () => {
-    const next = this.transform();
-    this.clear();
-    this.update();
-    draw();
-    if (!next) this.stop();
-  };
-
-  const animationFrame = () => {
-    this.clear();
-    this.update();
-    draw();
-    if (this.transform()) window.requestAnimationFrame(() => animationFrame());
-  };
-
-  this.stop = () => clearInterval(this.interval);
-
-  this.build = () => {
-    if (this.onFirstBuild) {
-      this.onFirstBuild();
-      delete this.onFirstBuild;
-    }
-
-    this.update();
-    draw();
-
-    if (this.onPostBuild) {
-      this.onPostBuild();
-      delete this.onPostBuild;
-    }
-  };
-
-  this.animate = (msInterval) => {
-    if (this.transform) {
-      if (msInterval) this.interval = setInterval(animation, msInterval);
-      else window.requestAnimationFrame(() => animationFrame());
-    } else {
-      this.build();
-    }
-  };
+    };
 } // End Drawable
