@@ -203,6 +203,20 @@ npm run dev
 ```
 Then open one of the demo pages in your browser.
 
+### Examples in the demo
+
+Color filter in images:
+
+![ColorFilterInImages](screenshots/ColorFilterInImages.png)
+
+Text position:
+
+![TextPosition](screenshots/TextPosition.png)
+
+Animations:
+
+![Animations](screenshots/Animations.gif)
+
 ## Development
 Build the library before testing or publishing:
 ```bash
