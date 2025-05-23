@@ -288,6 +288,7 @@
     const pY = 270;
     const pWidth = 300;
     const pHeight = 70;
+    const fontSize = 15;
     const text1 = new DrawableJS.Drawable(pWidth, pHeight);
     text1.ctx = ctx;
     text1.update = () => {
@@ -304,10 +305,16 @@
                 text: "ABC",
                 font: {
                     family: DrawableJS.Font.VERDANA,
-                    size: 15,
+                    size: fontSize,
                     style: "bold"
                 },
-                color: "#424242",
+                shadow: {
+                  dx: 0,
+                  dy: 0,
+                  blur: fontSize*0.3,
+                  color: "#000000"
+                },
+                color: "#ffffff",
                 textAlign: "center",
                 vAlign: "middle",
                 x: pX + (pWidth / 2),
