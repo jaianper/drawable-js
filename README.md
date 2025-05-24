@@ -1,6 +1,13 @@
 
 # DrawableJS
 
+[![GitHub release](https://img.shields.io/github/v/release/jaianper/drawable-js)](https://github.com/jaianper/drawable-js/releases)
+[![npm version](https://img.shields.io/npm/v/drawable-js.svg)](https://www.npmjs.com/package/drawable-js)
+[![npm downloads](https://img.shields.io/npm/dm/drawable-js.svg)](https://www.npmjs.com/package/drawable-js)
+[![License](https://img.shields.io/npm/l/drawable-js.svg)](LICENSE)
+![GitHub language top](https://img.shields.io/github/languages/top/jaianper/drawable-js)
+[![ESLint](https://img.shields.io/badge/code_style-eslint-4B32C3?logo=eslint)](https://eslint.org/)
+
 **DrawableJS** is a lightweight JavaScript library to draw shapes, gradients, styled text, and more on HTML5 `<canvas>`. It is inspired by Android's `Drawable` resource, but designed for the modern web.
 
 ## Features
@@ -227,7 +234,13 @@ npm run build
 This system is inspired by the Android `Drawable` class. It's made to help developers who are familiar with Android work easily on drawing and graphic design projects in the web environment.
 
 ## License
-MIT
+DrawableJS is now released under the **GNU General Public License version 3.0 (GPLv3)**.
+
+This change ensures that all derivative versions of this library remain free and open for the community.
+
+For more information, please refer to the [LICENSE](./LICENSE) file or visit: https://www.gnu.org/licenses/gpl-3.0.txt
+
+**Note:** Previous versions released under the MIT license remain under that license.
 
 ## Author
 Created by [jaianper](https://github.com/jaianper). Feel free to contribute or suggest improvements!
