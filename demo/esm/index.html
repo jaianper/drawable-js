@@ -13,17 +13,25 @@
             padding: 20px;
         }
 
+        .canvas-container {
+            position: relative;
+            width: 500px;
+            height: 500px;
+        }
+
         canvas {
             border: 1px solid #ccc;
+            position: absolute;
         }
     </style>
 </head>
 <body>
-<h1>Demo: Drawable Rectangle & Circle with Gradients</h1>
-<canvas id="myCanvas" width="400" height="300"></canvas>
-
+<h1>Drawable.js - ESM Demo Gallery</h1>
+<div class="canvas-container">
+    <canvas id="myCanvas" width="500" height="500"></canvas>
+</div>
 <script type="module">
-    import {Drawable, Shape, Gradient} from '../../dist/drawable.js';
+    import {Drawable, Shape, Gradient, Font, drawable2Image} from '../../dist/drawable.js';
 
     const canvas = document.getElementById("myCanvas");
     const ctx = canvas.getContext("2d");
@@ -64,13 +72,13 @@
             {
                 shape: Shape.OVAL,
                 x: 300,
-                y: 150,
+                y: 70,
                 radius: 50,
                 gradient: {
                     type: Gradient.RADIAL_GRADIENT,
-                    center1: {x: 300, y: 150},
+                    center1: {x: 300, y: 70},
                     radius1: 10,
-                    center2: {x: 300, y: 150},
+                    center2: {x: 300, y: 70},
                     radius2: 50,
                     startColor: "#00c6ff",
                     endColor: "#0072ff"
@@ -83,6 +91,330 @@
         ];
     };
     circle.build();
+
+    // -------------------------- Creating a Bingo Ball --------------------------
+
+    // Properties
+    const ballSize = 100;
+    const ballColor = "#e53935";
+    const number = "10";
+    const letter = "B";
+    const radius = ballSize / 2;
+    const x = radius;
+    const y = radius;
+    const gX = x + (ballSize * 0.45) - radius;
+    const gY = y + (ballSize * 0.01) - radius;
+
+    // Using Drawable
+    const bingoBall = new Drawable(ballSize, ballSize);
+    bingoBall.update = () => {
+        bingoBall.items = [
+            {
+                shape: Shape.OVAL,
+                color: ballColor,
+                x: x,
+                y: y,
+                radius: radius
+            },
+            {
+                shape: Shape.OVAL,
+                color: '#FFFFFF',
+                x: x,
+                y: y,
+                radius: radius - (ballSize / 8)
+            },
+            {
+                shape: Shape.OVAL,
+                x: x,
+                y: y,
+                radius: radius - (ballSize / 5.4),
+                stroke: {
+                    color: ballColor,
+                    width: (ballSize / 31)
+                }
+            },
+            {
+                text: letter,
+                font: {
+                    family: Font.ARIAL,
+                    size: ballSize * 0.16
+                },
+                color: "#424242",
+                textAlign: "center",
+                vAlign: "bottom",
+                x: x,
+                y: y - (radius * 0.31)
+            },
+            {
+                text: number,
+                font: {
+                    family: Font.ARIAL,
+                    size: ballSize * 0.40
+                },
+                color: "#424242",
+                textAlign: "center",
+                vAlign: "bottom",
+                x: x,
+                y: y + (radius * 0.33)
+            },
+            // Gradient to add shine
+            {
+                shape: Shape.OVAL,
+                x: x,
+                y: y,
+                radius: radius,
+                gradient: {
+                    type: Gradient.RADIAL_GRADIENT,
+                    startColor: "rgba(255, 255, 255, 0.85)",
+                    endColor: "rgba(255, 255, 255, 0)",
+                    center1: {x: gX, y: gY},
+                    center2: {x: gX, y: gY},
+                    radius1: ballSize / 50,
+                    radius2: radius
+                }
+            },
+            // Gradient to add shine
+            {
+                shape: Shape.OVAL,
+                x: x,
+                y: y,
+                radius: radius,
+                gradient: {
+                    type: Gradient.RADIAL_GRADIENT,
+                    startColor: "rgba(0, 0, 0, 0)",
+                    endColor: "rgba(0, 0, 0, 0.75)",
+                    center1: {x: gX, y: gY},
+                    center2: {x: gX, y: gY},
+                    radius1: radius,
+                    radius2: ballSize * 1.5
+                }
+            }
+        ];
+    };
+
+    // Image creation with the drawable
+    const ballImage = drawable2Image(bingoBall, "image/jpg");
+
+    // -------------------------- Animation (Zoom In & Zoom Out) --------------------------
+    let sSize = 0;
+    let animName = 'zoomIn';
+    const aX = 30;
+    const aY = 150;
+    const frames = 30;
+    const increment = ballSize / frames;
+
+    const animatedBall = new Drawable(ballSize, ballSize, aX, aY);
+    animatedBall.ctx = ctx;
+    animatedBall.update = () => {
+        const toCenter = radius - (sSize / 2);
+
+        animatedBall.items = [{
+            image: 'image/jpg',
+            data: ballImage,
+            x: aX + toCenter,
+            y: aY + toCenter,
+            width: sSize,
+            height: sSize
+        }];
+    };
+
+    /**
+     * Updates the animation state.
+     *
+     * To control when the animation stops, return `false` from the function. Returning `true` keeps it running.
+     */
+    animatedBall.transform = () => {
+        if (animName == 'zoomIn') {
+            sSize += increment;
+
+            if (sSize > ballSize) {
+                sSize = ballSize;
+                animName = 'zoomOut';
+            }
+        } else if (animName == 'zoomOut') {
+            sSize -= increment;
+
+            if (sSize < 0) {
+                sSize = 0;
+                animName = 'zoomIn';
+            }
+        }
+        return true;
+    };
+    animatedBall.animate(60); // 60 milliseconds between frames
+
+    // -------------------------- Animation (Rotation) --------------------------
+    const totalFrames = 120;
+    const anglePerFrame = 360 / totalFrames;
+    let angle = 0;
+    const sX = aX + ballSize + 20;
+    const sY = 150;
+    const spinningBall = new Drawable(ballSize, ballSize, sX, sY);
+    spinningBall.ctx = ctx;
+    spinningBall.update = () => {
+        spinningBall.items = [{
+            image: 'image/jpg',
+            data: ballImage,
+            x: sX,
+            y: sY,
+            width: ballSize,
+            height: ballSize,
+            angle: angle
+        }];
+    };
+
+    /**
+     * Updates the animation state.
+     *
+     * To control when the animation stops, return `false` from the function. Returning `true` keeps it running.
+     */
+    spinningBall.transform = () => {
+        angle = (angle + anglePerFrame) % 360;
+        return true;
+    };
+    spinningBall.animate(40); // 40 milliseconds between frames
+
+    // ---------------------------------------------------------------------------
+
+    // Rectangle with linear gradient and border
+    const pX = 20;
+    const pY = 270;
+    const pWidth = 300;
+    const pHeight = 70;
+    const fontSize = 15;
+    const text1 = new Drawable(pWidth, pHeight);
+    text1.ctx = ctx;
+    text1.update = () => {
+        text1.items = [
+            {
+                shape: Shape.RECTANGLE,
+                x: pX,
+                y: pY,
+                width: pWidth,
+                height: pHeight,
+                color: "#00c6ff"
+            },
+            {
+                text: "ABC",
+                font: {
+                    family: Font.VERDANA,
+                    size: fontSize,
+                    style: "bold"
+                },
+                shadow: {
+                  dx: 0,
+                  dy: 0,
+                  blur: fontSize*0.3,
+                  color: "#000000"
+                },
+                color: "#ffffff",
+                textAlign: "center",
+                vAlign: "middle",
+                x: pX + (pWidth / 2),
+                y: pY + (pHeight / 2)
+            }
+        ];
+
+        const vAlign1 = ["top", "middle", "bottom"];
+        const textAlign1 = ["left", "center", "right"];
+        for (let i = 0; i < vAlign1.length; i++) {
+            text1.items.push(
+                {
+                    text: "ABC",
+                    font: {
+                        family: Font.VERDANA,
+                        size: 15,
+                        style: "bold"
+                    },
+                    color: "#424242",
+                    textAlign: "center",
+                    vAlign: vAlign1[i],
+                    x: pX + (i * (pWidth / 2)),
+                    y: pY
+                }
+            );
+            text1.items.push(
+                {
+                    text: "ABC",
+                    font: {
+                        family: Font.VERDANA,
+                        size: 15,
+                        style: "bold"
+                    },
+                    color: "#424242",
+                    textAlign: textAlign1[i],
+                    vAlign: "bottom",
+                    x: pX + (i * (pWidth / 2)),
+                    y: pY + pHeight
+                }
+            );
+        }
+    };
+    text1.build();
+
+    // ---------------------------------------------------------------------------
+
+    // Using color filter on planets
+    const iX = 20;
+    const iY = 350;
+    const iWidth = 64;
+    const iHeight = 64;
+    const img1 = new Drawable(iWidth, iHeight);
+    img1.ctx = ctx;
+    img1.update = () => {
+        const colors = ["#ff9633", "#33ff5b", "#339fff", "#d133ff", "#ff3336"];
+
+        img1.items = [];
+
+        for (let i = 0; i < colors.length; i++) {
+            img1.items.push({
+                image: 'image/url',
+                url: 'images/Planet.png',
+                colorFilter: colors[i],
+                width: iWidth,
+                height: iHeight,
+                x: iX + (i * iWidth),
+                y: iY,
+                //angle: 15 * i,
+                onLoadImg: function () {
+                    console.log(`Planet ${i + 1} loaded!`);
+                }
+            });
+        }
+    };
+    img1.build();
+
+    // ---------------------------------------------------------------------------
+
+    // Using color filter on maples
+    const cX = 20;
+    const cY = 430;
+    const cWidth = 64;
+    const cHeight = 64;
+    const img2 = new Drawable(cWidth, cHeight);
+    img2.ctx = ctx;
+    img2.update = () => {
+        const colors = ["#ff7000", "#ffae00", "#ffd800", "#fffb00", "#c9ff00"];
+
+        img2.items = [];
+
+        for (let i = 0; i < colors.length; i++) {
+            img2.items.push({
+                image: 'image/url',
+                url: 'images/Maple.png',
+                colorFilter: colors[i],
+                width: cWidth,
+                height: cHeight,
+                x: cX + (i * cWidth),
+                y: cY,
+                angle: 20 * i,
+                onLoadImg: function () {
+                    console.log(`Maple ${i + 1} loaded!`);
+                }
+            });
+        }
+    };
+    img2.build();
 </script>
 </body>
 </html>
