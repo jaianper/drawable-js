@@ -1,4 +1,11 @@
-// DrawableJS - Modular library inspired by Android's Drawable
+/*
+ * DrawableJS
+ * Copyright (c) 2025 jaianper
+ *
+ * This file is part of DrawableJS.
+ * Licensed under the GNU General Public License v3.0.
+ * You may obtain a copy of the License at https://www.gnu.org/licenses/gpl-3.0.txt
+ */
 
 // --- Exportable constants ---
 export const Shape = {

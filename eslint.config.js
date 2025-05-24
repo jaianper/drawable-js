@@ -31,7 +31,8 @@ export default [
       // eslint-plugin-unicorn rules (ejemplos)
       'unicorn/prevent-abbreviations': 'off', // puedes desactivar si quieres
       'unicorn/no-null': 'off',
-      'unicorn/filename-case': ['error', { case: 'kebabCase' }],
+      //'unicorn/filename-case': ['error', { case: 'kebabCase' }],
+      'unicorn/filename-case': 'off'
     },
   },
 ];
