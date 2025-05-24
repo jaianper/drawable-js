@@ -1,6 +1,6 @@
 {
   "name": "drawable-js",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A lightweight JavaScript library to draw shapes and effects on HTML canvas, inspired by Android's Drawable.",
   "main": "dist/drawable.umd.js",
   "module": "dist/drawable.js",
