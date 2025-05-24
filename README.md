@@ -1,6 +1,13 @@
 
 # DrawableJS
 
+[![GitHub release](https://img.shields.io/github/v/release/jaianper/drawable-js)](https://github.com/jaianper/drawable-js/releases)
+[![npm version](https://img.shields.io/npm/v/drawable-js.svg)](https://www.npmjs.com/package/drawable-js)
+[![npm downloads](https://img.shields.io/npm/dm/drawable-js.svg)](https://www.npmjs.com/package/drawable-js)
+[![License](https://img.shields.io/npm/l/drawable-js.svg)](LICENSE)
+![GitHub language top](https://img.shields.io/github/languages/top/jaianper/drawable-js)
+[![ESLint](https://img.shields.io/badge/code_style-eslint-4B32C3?logo=eslint)](https://eslint.org/)
+
 **DrawableJS** is a lightweight JavaScript library to draw shapes, gradients, styled text, and more on HTML5 `<canvas>`. It is inspired by Android's `Drawable` resource, but designed for the modern web.
 
 ## Features

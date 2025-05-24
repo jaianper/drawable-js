@@ -2,7 +2,7 @@ import babel from '@rollup/plugin-babel';
 
 export default [
   {
-    input: 'src/Drawable.js',
+    input: 'src/drawable.js',
     output: {
       file: 'dist/drawable.js',
       format: 'esm',
@@ -16,7 +16,7 @@ export default [
     ]
   },
   {
-    input: 'src/Drawable.js',
+    input: 'src/drawable.js',
     output: {
       file: 'dist/drawable.umd.js',
       format: 'umd',

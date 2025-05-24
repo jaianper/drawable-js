@@ -11,7 +11,8 @@
   "scripts": {
     "dev": "vite demo/esm",
     "build": "rollup -c",
-    "release": "npm version patch && npm publish"
+    "release": "npm version patch && npm publish",
+    "lint": "eslint src"
   },
   "repository": {
     "type": "git",
@@ -34,6 +35,10 @@
     "@babel/core": "^7.24.0",
     "@babel/preset-env": "^7.24.0",
     "@rollup/plugin-babel": "^6.0.3",
+    "eslint": "^9.27.0",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-security": "^3.0.1",
+    "eslint-plugin-unicorn": "^59.0.1",
     "rollup": "^4.15.0",
     "vite": "^6.3.5"
   },

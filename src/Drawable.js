@@ -1,4 +1,4 @@
-// Drawable.js - Modular library inspired by Android's Drawable
+// DrawableJS - Modular library inspired by Android's Drawable
 
 // --- Exportable constants ---
 export const Shape = {
@@ -77,20 +77,20 @@ export const FontLoader = {
     load: function (info) {
         const fonts = info.families;
         const width = 150, height = 25;
-        const canvas = document.createElement("canvas");
+        const canvas = document.createElement('canvas');
         canvas.width = width;
         canvas.height = height;
 
         const loadFont = function (font) {
             const text = new Drawable(width, height);
-            text.ctx = canvas.getContext("2d");
+            text.ctx = canvas.getContext('2d');
             text.update = function () {
                 this.items = [{
-                    text: "AEIOUBCDFGHIJ/0123456789",
+                    text: 'AEIOUBCDFGHIJ/0123456789',
                     font: {family: font, size: 20},
-                    color: "#FFFFFF",
-                    textAlign: "left",
-                    vAlign: "top",
+                    color: '#FFFFFF',
+                    textAlign: 'left',
+                    vAlign: 'top',
                     x: 0,
                     y: 0
                 }];
@@ -234,7 +234,7 @@ const getPointsFromAngle = (angle, center, width, height) => {
 
 const ImageCache = {};
 const getImgCopy = (imgName, width, height) => {
-    var imgSize = width + "_" + height;
+    var imgSize = width + '_' + height;
     var targetImages = ImageCache[imgSize];
     let copy;
     if (targetImages && targetImages[imgName]) {
@@ -253,11 +253,11 @@ const loadImage = (src) => {
 };
 
 export const drawable2Image = (drawable, type, callback) => {
-    const canvas = document.createElement("canvas");
+    const canvas = document.createElement('canvas');
     canvas.width = drawable.width;
     canvas.height = drawable.height;
 
-    drawable.ctx = canvas.getContext("2d");
+    drawable.ctx = canvas.getContext('2d');
     drawable.build();
 
     const img = new Image();
@@ -313,7 +313,7 @@ export function Drawable(width = 0, height = 0, x = 0, y = 0) {
     const removeShadow = () => {
         this.ctx.shadowOffsetX = 0;
         this.ctx.shadowOffsetY = 0;
-        this.ctx.shadowColor = "transparent";
+        this.ctx.shadowColor = 'transparent';
         this.ctx.shadowBlur = 0;
     };
 
@@ -449,10 +449,10 @@ export function Drawable(width = 0, height = 0, x = 0, y = 0) {
             } else if (typeof item.image !== 'undefined') {
                 if (item.image == 'image/url') {
                     var imgUrl = item.url;
-                    var imgName = imgUrl.substring(imgUrl.lastIndexOf("/") + 1);
+                    var imgName = imgUrl.substring(imgUrl.lastIndexOf('/') + 1);
                     var imgCopy = getImgCopy(imgName, item.width, item.height);
                     if (imgCopy) {
-                        console.log("cache");
+                        //console.log('cache');
                         if (typeof imgCopy.w !== 'undefined' && typeof imgCopy.h !== 'undefined') {
 
                             let posX = item.x;
@@ -472,9 +472,9 @@ export function Drawable(width = 0, height = 0, x = 0, y = 0) {
                         } else {
                             this.ctx.drawImage(imgCopy.image, item.x, item.y);
                         }
-                        if (typeof item.onLoadImg !== "undefined") item.onLoadImg();
+                        if (typeof item.onLoadImg !== 'undefined') item.onLoadImg();
                     } else {
-                        console.log("new");
+                        //console.log('new');
                         const img = new Image();
                         img.onload = function (n, w, h) {
                             if (typeof item.angle !== 'undefined') {
@@ -483,7 +483,7 @@ export function Drawable(width = 0, height = 0, x = 0, y = 0) {
                                 this.ctx.rotate(item.angle * (Math.PI / 180)); // degrees to radians
                             }
                             var imgInfo = {w: w, h: h};
-                            var imgSize = w + "_" + h;
+                            var imgSize = w + '_' + h;
                             if (typeof w !== 'undefined' && typeof h !== 'undefined') {
 
                                 let posX = item.x;
@@ -512,7 +512,7 @@ export function Drawable(width = 0, height = 0, x = 0, y = 0) {
                                 this.ctx.restore();
                             }
 
-                            if (typeof ImageCache[imgSize] === "undefined") ImageCache[imgSize] = {};
+                            if (typeof ImageCache[imgSize] === 'undefined') ImageCache[imgSize] = {};
                             ImageCache[imgSize][n] = imgInfo;
                             if (item.onLoadImg) item.onLoadImg();
                         }.bind(this, imgName, item.width, item.height);
@@ -524,7 +524,7 @@ export function Drawable(width = 0, height = 0, x = 0, y = 0) {
                             this.ctx.rotate(item.angle * (Math.PI / 180)); // degrees to radians
                         }
                         var imgInfo = { w: item.width, h: item.height };
-                        var imgSize = item.width + "_" + item.height;
+                        var imgSize = item.width + '_' + item.height;
                         if (typeof item.width !== 'undefined' && typeof item.height !== 'undefined') {
 
                             let posX = item.x;
@@ -555,7 +555,7 @@ export function Drawable(width = 0, height = 0, x = 0, y = 0) {
                             this.ctx.restore();
                         }
 
-                        if (typeof ImageCache[imgSize] === "undefined") ImageCache[imgSize] = {};
+                        if (typeof ImageCache[imgSize] === 'undefined') ImageCache[imgSize] = {};
                         ImageCache[imgSize][imgName] = imgInfo;
                         if (item.onLoadImg) item.onLoadImg();*/
                     }
