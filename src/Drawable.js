@@ -32,36 +32,41 @@ export const Orientation = {
     HORIZONTAL: 'O_H'
 };
 
-const DHP = 0.75; // Default height percentage
-const DLO = 0.03; // Default lower overlap
+const DAR = 0.75; // DEFAULT_ASCENT_RATIO
+const DDR = 0.03; // DEFAULT_DESCENT_RATIO
 
-// - hPerc is an approximate percentage for any text size, which allows you to calculate the height (px) that alphanumeric characters will have when using a certain font.
-// - lowerOverlap is a rough percentage for any text size, which allows you to calculate the height overflow (px) for some alphanumeric characters when using a certain font.
+/**
+ * `ascentRatio` and `descentRatio` are empirical estimates of typographic layout proportions that are used 
+ * as a fallback when the browser does not support the `actualBoundingBoxAscent` and `actualBoundingBoxDescent` properties.
+ * 
+ * - 75% of the font size is usually above the baseline (ascent).
+ * - 3% is usually below (descent).
+ */
 export const Font = {
-    ARIAL: {name: 'Arial', hPerc: 0.78, lowerOverlap: DLO},
-    AVERIA: {name: 'Averia Gruesa', hPerc: 0.76, lowerOverlap: DLO},
-    BALOO: {name: 'Baloo', hPerc: 0.69, lowerOverlap: DLO},
-    BEBAS_NEUE: {name: 'Bebas Neue', hPerc: DHP, lowerOverlap: DLO},
-    BUTCHERMAN: {name: 'Butcherman', hPerc: 0.77, lowerOverlap: 0.05},
-    CALIBRI: {name: 'Calibri', hPerc: 0.69, lowerOverlap: DLO},
-    COMIC_SANS: {name: 'Comic Sans MS', hPerc: 0.78, lowerOverlap: DLO},
-    CONSOLAS: {name: 'Consolas', hPerc: 0.69, lowerOverlap: DLO},
-    COURIER_NEW: {name: 'Courier New', hPerc: 0.65, lowerOverlap: DLO},
-    CRASH_NUMB: {name: 'Crash Numbering Serif', hPerc: 0.74, lowerOverlap: DLO},
-    CREEPSTER: {name: 'Creepster', hPerc: 0.76, lowerOverlap: DLO},
-    DROID_SANS: {name: 'Droid Sans', hPerc: 0.73, lowerOverlap: DLO},
-    DROID_SERIF: {name: 'Droid Serif', hPerc: 0.73, lowerOverlap: DLO},
-    EATER: {name: 'Eater', hPerc: 0.85, lowerOverlap: 0.04},
-    FLAVORS: {name: 'Flavors', hPerc: 0.78, lowerOverlap: DLO},
-    FREDOKA_ONE: {name: 'Fredoka One', hPerc: 0.76, lowerOverlap: DLO},
-    GEORGIA: {name: 'Georgia', hPerc: DHP, lowerOverlap: DLO},
-    GOCHI_HAND: {name: 'Gochi Hand', hPerc: 0.59, lowerOverlap: DLO},
-    IMPACT: {name: 'Impact', hPerc: 0.83, lowerOverlap: DLO},
-    MOUNT_CHRIST: {name: 'Mountains of Christmas', hPerc: 0.83, lowerOverlap: 0.06},
-    RAMABHADRA: {name: 'Ramabhadra', hPerc: 0.76, lowerOverlap: DLO},
-    TIMES_NEW_R: {name: 'Times New Roman', hPerc: DHP, lowerOverlap: DLO},
-    TREBUCHET: {name: 'Trebuchet MS', hPerc: DHP, lowerOverlap: DLO},
-    VERDANA: {name: 'Verdana', hPerc: 0.77, lowerOverlap: DLO},
+    ARIAL: {name: 'Arial', ascentRatio: 0.78, descentRatio: DDR},
+    AVERIA: {name: 'Averia Gruesa', ascentRatio: 0.76, descentRatio: DDR},
+    BALOO: {name: 'Baloo', ascentRatio: 0.69, descentRatio: DDR},
+    BEBAS_NEUE: {name: 'Bebas Neue', ascentRatio: DAR, descentRatio: DDR},
+    BUTCHERMAN: {name: 'Butcherman', ascentRatio: 0.77, descentRatio: 0.05},
+    CALIBRI: {name: 'Calibri', ascentRatio: 0.69, descentRatio: DDR},
+    COMIC_SANS: {name: 'Comic Sans MS', ascentRatio: 0.78, descentRatio: DDR},
+    CONSOLAS: {name: 'Consolas', ascentRatio: 0.69, descentRatio: DDR},
+    COURIER_NEW: {name: 'Courier New', ascentRatio: 0.65, descentRatio: DDR},
+    CRASH_NUMB: {name: 'Crash Numbering Serif', ascentRatio: 0.74, descentRatio: DDR},
+    CREEPSTER: {name: 'Creepster', ascentRatio: 0.76, descentRatio: DDR},
+    DROID_SANS: {name: 'Droid Sans', ascentRatio: 0.73, descentRatio: DDR},
+    DROID_SERIF: {name: 'Droid Serif', ascentRatio: 0.73, descentRatio: DDR},
+    EATER: {name: 'Eater', ascentRatio: 0.85, descentRatio: 0.04},
+    FLAVORS: {name: 'Flavors', ascentRatio: 0.78, descentRatio: DDR},
+    FREDOKA_ONE: {name: 'Fredoka One', ascentRatio: 0.76, descentRatio: DDR},
+    GEORGIA: {name: 'Georgia', ascentRatio: DAR, descentRatio: DDR},
+    GOCHI_HAND: {name: 'Gochi Hand', ascentRatio: 0.59, descentRatio: DDR},
+    IMPACT: {name: 'Impact', ascentRatio: 0.83, descentRatio: DDR},
+    MOUNT_CHRIST: {name: 'Mountains of Christmas', ascentRatio: 0.83, descentRatio: 0.06},
+    RAMABHADRA: {name: 'Ramabhadra', ascentRatio: 0.76, descentRatio: DDR},
+    TIMES_NEW_R: {name: 'Times New Roman', ascentRatio: DAR, descentRatio: DDR},
+    TREBUCHET: {name: 'Trebuchet MS', ascentRatio: DAR, descentRatio: DDR},
+    VERDANA: {name: 'Verdana', ascentRatio: 0.77, descentRatio: DDR},
 
     values: function () {
         return Object.values(this).filter(f => typeof f !== 'function');
@@ -97,7 +102,7 @@ export const FontLoader = {
                     font: {family: font, size: 20},
                     color: '#FFFFFF',
                     textAlign: 'left',
-                    vAlign: 'top',
+                    verticalAlign: 'top',
                     x: 0,
                     y: 0
                 }];
@@ -378,40 +383,59 @@ export function Drawable(width = 0, height = 0, x = 0, y = 0) {
             if (typeof item.text !== 'undefined') {
                 // item.y indicates the position from where the text begins to be painted
                 // this.y indicates the position reserved to start erasing the text, given that some characters overflow and also because of shadows.
-                const calcOverlap = item.font.size * (item.font.family.lowerOverlap || DLO);
-                const calcHeight = item.font.size * (item.font.family.hPerc || DHP);
-                const shadowBlur = typeof item.shadow !== 'undefined' ? item.shadow.blur : 0;
                 const fontFamily = item.font.family.name || 'Arial';
                 const fontStyle = item.font.style ? `${item.font.style} ` : '';
                 const fontSize = item.font.size || 12;
-                let mY = item.y - calcOverlap;
+                const ascentRatio = item.font.family.ascentRatio || DAR;
+                const descentRatio = item.font.family.descentRatio || DDR;
+                const shadowBlur = typeof item.shadow !== 'undefined' ? item.shadow.blur : 0;
 
-                if (typeof item.lineHeight !== 'undefined') mY -= item.lineHeight;
-
-                let yAdjust;
-                if (item.vAlign == 'top') {
-                    mY -= shadowBlur;
-                    yAdjust = mY;
-                    mY += calcHeight;
-                } else if (item.vAlign == 'middle') {
-                    const middle = calcHeight / 2;
-                    yAdjust = mY - middle;
-                    mY += middle;
-                } else if (item.vAlign == 'bottom') {
-                    yAdjust = mY - calcHeight;
-                }
-
-                this.x = item.x - (calcHeight / 2);
-                this.y = yAdjust - shadowBlur - (calcHeight / 2);
-
+                // Set the font
                 this.ctx.font = `${fontStyle}${fontSize}px ${fontFamily}`;
-                this.ctx.textAlign = item.textAlign;
                 this.ctx.textBaseline = 'alphabetic'; // Consistent baseline for any source and on any device.
-                this.ctx.fillText(item.text, item.x, mY);
 
-                tWidth = this.ctx.measureText(item.text).width + calcHeight;
-                //tHeight = calcHeight + calcOverlap + (shadowBlur*2) + calcHeight;
-                tHeight = calcHeight + calcOverlap + (shadowBlur * 2);
+                const metrics = this.ctx.measureText(item.text);
+
+                // Empirical estimates are used
+                // ascent: the distance from the baseline of the text to the highest part of the letters (e.g., the top of a "d").
+                // descent: distance from the baseline to the lowest point (e.g., the tail of a "g" or "p").
+                const ascent = fontSize * ascentRatio;
+                const descent = fontSize * descentRatio;
+                // `actualBoundingBoxAscent` and `actualBoundingBoxDescent` do not give exact values.
+                //const ascent = metrics.actualBoundingBoxAscent || ascent;
+                //const descent = metrics.actualBoundingBoxDescent || descent;
+                const halfAscent = ascent / 2;
+                let adjustedY = item.y - descent;
+                let mY;
+
+                if (typeof item.lineHeight !== 'undefined') adjustedY -= item.lineHeight;
+
+                switch (item.verticalAlign) {
+                    case "top":
+                        adjustedY -= shadowBlur;
+                        mY = adjustedY;
+                        adjustedY += ascent;
+                        break;
+                    case "middle":
+                        mY = adjustedY - halfAscent;
+                        adjustedY += halfAscent - (descent / 2);
+                        break;
+                    case "bottom":
+                        mY = adjustedY - ascent;
+                        break;
+                    default:
+                        adjustedY -= shadowBlur;
+                        mY = adjustedY;
+                        adjustedY += ascent;
+                }
+                this.x = item.x - halfAscent;
+                this.y = mY - shadowBlur - halfAscent;
+                
+                this.ctx.textAlign = item.textAlign;
+                this.ctx.fillText(item.text, item.x, adjustedY);
+
+                tWidth = metrics.width + ascent;
+                tHeight = ascent + descent + (shadowBlur * 2);
             } else if (item.shape == Shape.LINE) {
                 this.ctx.beginPath();
                 this.ctx.moveTo(item.from.x, item.from.y);
