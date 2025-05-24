@@ -218,16 +218,10 @@ Animations:
 ![Animations](screenshots/Animations.gif)
 
 ## Development
-Build the library before testing or publishing:
+Build the library before testing:
 ```bash
 npm run build
 ```
-
-To publish a new version:
-```bash
-npm run release
-```
-(This automatically bumps the patch version and publishes to npm.)
 
 ## Inspiration
 This system is inspired by the Android `Drawable` class. It's made to help developers who are familiar with Android work easily on drawing and graphic design projects in the web environment.
