@@ -69,6 +69,8 @@ rect.update = () => {
 rect.build();
 ```
 
+Result:
+
 ![Rectangle](screenshots/Rectangle.png)
 
 Draw a Circle with Radial Gradient:
@@ -105,6 +107,8 @@ circle.update = () => {
 };
 circle.build();
 ```
+
+Result:
 
 ![Circle](screenshots/Circle.png)
 
@@ -145,6 +149,8 @@ Draw a Rectangle with Linear Gradient:
 </script>
 ```
 
+Result:
+
 ![Rectangle](screenshots/Rectangle.png)
 
 Draw a Circle with Radial Gradient:
@@ -182,6 +188,8 @@ Draw a Circle with Radial Gradient:
   circle.build();
 </script>
 ```
+
+Result:
 
 ![Circle](screenshots/Circle.png)
 
@@ -234,13 +242,13 @@ npm run build
 This system is inspired by the Android `Drawable` class. It's made to help developers who are familiar with Android work easily on drawing and graphic design projects in the web environment.
 
 ## License
-DrawableJS is now released under the **GNU General Public License version 3.0 (GPLv3)**.
+DrawableJS is now released under the **MIT License**.
 
-This change ensures that all derivative versions of this library remain free and open for the community.
+This change allows for more flexibility in how the library can be used, both in open-source and proprietary software.
 
-For more information, please refer to the [LICENSE](./LICENSE) file or visit: https://www.gnu.org/licenses/gpl-3.0.txt
+For more details, see the [LICENSE](./LICENSE) file or visit: https://opensource.org/licenses/MIT
 
-**Note:** Previous versions released under the MIT license remain under that license.
+**Note:** Previous versions released under the GPLv3 license remain under that license.
 
 ## Author
 Created by [jaianper](https://github.com/jaianper). Feel free to contribute or suggest improvements!
