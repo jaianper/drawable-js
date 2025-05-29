@@ -3,8 +3,8 @@
  * Copyright (c) 2025 jaianper
  *
  * This file is part of DrawableJS.
- * Licensed under the GNU General Public License v3.0.
- * You may obtain a copy of the License at https://www.gnu.org/licenses/gpl-3.0.txt
+ * Licensed under the MIT License.
+ * You may obtain a copy of the License at https://opensource.org/licenses/MIT
  */
 
 // --- Exportable constants ---
@@ -36,9 +36,9 @@ const DAR = 0.75; // DEFAULT_ASCENT_RATIO
 const DDR = 0.03; // DEFAULT_DESCENT_RATIO
 
 /**
- * `ascentRatio` and `descentRatio` are empirical estimates of typographic layout proportions that are used 
+ * `ascentRatio` and `descentRatio` are empirical estimates of typographic layout proportions that are used
  * as a fallback when the browser does not support the `actualBoundingBoxAscent` and `actualBoundingBoxDescent` properties.
- * 
+ *
  * - 75% of the font size is usually above the baseline (ascent).
  * - 3% is usually below (descent).
  */
@@ -62,10 +62,10 @@ export const Font = {
     GEORGIA: {name: 'Georgia', ascentRatio: DAR, descentRatio: DDR},
     GOCHI_HAND: {name: 'Gochi Hand', ascentRatio: 0.59, descentRatio: DDR},
     IMPACT: {name: 'Impact', ascentRatio: 0.83, descentRatio: DDR},
-    MOUNT_CHRIST: {name: 'Mountains of Christmas', ascentRatio: 0.83, descentRatio: 0.06},
+    MOUNTAINS_CHRISTMAS: {name: 'Mountains of Christmas', ascentRatio: 0.83, descentRatio: 0.06},
     RAMABHADRA: {name: 'Ramabhadra', ascentRatio: 0.76, descentRatio: DDR},
-    TIMES_NEW_R: {name: 'Times New Roman', ascentRatio: DAR, descentRatio: DDR},
-    TREBUCHET: {name: 'Trebuchet MS', ascentRatio: DAR, descentRatio: DDR},
+    TIMES_NEW_ROMAN: {name: 'Times New Roman', ascentRatio: DAR, descentRatio: DDR},
+    TREBUCHET_MS: {name: 'Trebuchet MS', ascentRatio: DAR, descentRatio: DDR},
     VERDANA: {name: 'Verdana', ascentRatio: 0.77, descentRatio: DDR},
 
     values: function () {
@@ -280,16 +280,6 @@ export const drawable2Image = (drawable, type, callback) => {
     return img;
 };
 
-const cloneJSON = (source) => {
-    if (Array.isArray(source)) return source.map(cloneJSON);
-    else if (typeof source === 'object' && source !== null) {
-        const copy = {};
-        for (const key in source) copy[key] = cloneJSON(source[key]);
-        return copy;
-    }
-    return source;
-};
-
 // --- Clase principal ---
 export function Drawable(width = 0, height = 0, x = 0, y = 0) {
     this.margin = {top: 0, left: 0, bottom: 0, right: 0};
@@ -304,21 +294,12 @@ export function Drawable(width = 0, height = 0, x = 0, y = 0) {
         var ctx = canvas.getContext('2d');
         canvas.width = imgInfo.w || imgInfo.width;
         canvas.height = imgInfo.h || imgInfo.height;
-        /*if(typeof imgInfo.angle !== 'undefined') {
-            ctx.save();
-            ctx.translate(canvas.width/2, canvas.height/2);
-            ctx.rotate(imgInfo.angle * (Math.PI / 180));
-            ctx.drawImage(imgInfo.image, -canvas.width / 2, -canvas.height / 2);
-        }
-        else {*/
+
         ctx.drawImage(imgInfo.image, 0, 0, canvas.width, canvas.height);
-        //}
         ctx.globalCompositeOperation = 'source-atop';
         ctx.fillStyle = imgInfo.cf || imgInfo.colorFilter;
         ctx.fillRect(0, 0, canvas.width, canvas.height);
-        /*if(typeof imgInfo.angle !== 'undefined') {
-            ctx.restore();
-        }*/
+
         return canvas;
     };
 
@@ -350,7 +331,7 @@ export function Drawable(width = 0, height = 0, x = 0, y = 0) {
             } else if (typeof item.gradient !== 'undefined') {
                 const gradient = item.gradient;
                 let grd;
-                if (gradient.type == Gradient.RADIAL_GRADIENT) {
+                if (gradient.type === Gradient.RADIAL_GRADIENT) {
                     grd = this.ctx.createRadialGradient(
                         gradient.center1.x,
                         gradient.center1.y,
@@ -358,7 +339,7 @@ export function Drawable(width = 0, height = 0, x = 0, y = 0) {
                         gradient.center2.x,
                         gradient.center2.y,
                         gradient.radius2);
-                } else if (gradient.type == Gradient.LINEAR_GRADIENT) {
+                } else if (gradient.type === Gradient.LINEAR_GRADIENT) {
                     var points = getPointsFromAngle(gradient.angle, gradient.center, item.width, item.height);
                     grd = this.ctx.createLinearGradient(
                         points.x0 + item.x,
@@ -411,16 +392,16 @@ export function Drawable(width = 0, height = 0, x = 0, y = 0) {
                 if (typeof item.lineHeight !== 'undefined') adjustedY -= item.lineHeight;
 
                 switch (item.verticalAlign) {
-                    case "top":
+                    case 'top':
                         adjustedY -= shadowBlur;
                         mY = adjustedY;
                         adjustedY += ascent;
                         break;
-                    case "middle":
+                    case 'middle':
                         mY = adjustedY - halfAscent;
                         adjustedY += halfAscent - (descent / 2);
                         break;
-                    case "bottom":
+                    case 'bottom':
                         mY = adjustedY - ascent;
                         break;
                     default:
@@ -430,22 +411,22 @@ export function Drawable(width = 0, height = 0, x = 0, y = 0) {
                 }
                 this.x = item.x - halfAscent;
                 this.y = mY - shadowBlur - halfAscent;
-                
+
                 this.ctx.textAlign = item.textAlign;
                 this.ctx.fillText(item.text, item.x, adjustedY);
 
                 tWidth = metrics.width + ascent;
                 tHeight = ascent + descent + (shadowBlur * 2);
-            } else if (item.shape == Shape.LINE) {
+            } else if (item.shape === Shape.LINE) {
                 this.ctx.beginPath();
                 this.ctx.moveTo(item.from.x, item.from.y);
                 this.ctx.lineTo(item.to.x, item.to.y);
-            } else if (item.shape == Shape.OVAL) {
+            } else if (item.shape === Shape.OVAL) {
                 this.ctx.beginPath();
                 this.ctx.arc(item.x, item.y, item.radius, 0, Math.PI * 2);
                 this.ctx.closePath();
                 this.ctx.fill();
-            } else if (item.shape == Shape.RECTANGLE) {
+            } else if (item.shape === Shape.RECTANGLE) {
                 const rx = item.x;
                 const ry = item.y;
                 const rw = item.width;
@@ -478,7 +459,7 @@ export function Drawable(width = 0, height = 0, x = 0, y = 0) {
                     }
                 }
             } else if (typeof item.image !== 'undefined') {
-                if (item.image == 'image/url') {
+                if (item.image === 'image/url') {
                     var imgUrl = item.url;
                     var imgName = imgUrl.substring(imgUrl.lastIndexOf('/') + 1);
                     var imgCopy = getImgCopy(imgName, item.width, item.height);
@@ -670,3 +651,128 @@ export function Drawable(width = 0, height = 0, x = 0, y = 0) {
         }
     };
 } // End Drawable
+
+export function LinearLayout(x, y) {
+    this.margin = {top: 0, left: 0, bottom: 0, right: 0};
+    this.views = [];
+    this.x = x || 0;
+    this.y = y || 0;
+    this.verticalAlignment = Alignment.BOTTOM;
+    this.horizontalAlignment = Alignment.CENTER;
+    this.orientation = Orientation.HORIZONTAL;
+
+    this.addView = function (view) {
+        this.views.push(view);
+    };
+
+    this.onLayout = function () {
+        let width = 0;
+        let height = 0;
+
+        if (this.orientation === Orientation.HORIZONTAL) {
+            for (let i = 0; i < this.views.length; ++i) {
+                const view = this.views[i];
+
+                if (typeof view.onLayout !== 'undefined') view.onLayout();
+                const vHeight = view.height + view.margin.top + view.margin.bottom;
+                if (vHeight > height) height = vHeight;
+
+                width += view.width + view.margin.left + view.margin.right;
+            }
+        } else {
+            for (let i = 0; i < this.views.length; ++i) {
+                const view = this.views[i];
+
+                if (typeof view.onLayout !== 'undefined') view.onLayout();
+                const vWidth = view.width + view.margin.left + view.margin.right;
+                if (vWidth > width) width = vWidth;
+
+                height += view.height + view.margin.top + view.margin.bottom;
+            }
+        }
+
+        this.width = this.width || width;
+        this.height = this.height || height;
+    };
+
+    this.build = function () {
+        this.onLayout();
+
+        if (typeof this.background !== 'undefined') {
+            const background = this.background;
+            const width = this.width + this.margin.left + this.margin.right;
+            const height = this.height + this.margin.top + this.margin.bottom;
+            const bg = new Drawable(width, height, this.x - this.margin.left, this.y - this.margin.top);
+            bg.ctx = background.ctx;
+            bg.update = function () {
+                /*this.items = [
+                    {
+                        shape: Shape.RECTANGLE,
+                        color: background.color,
+                        x: this.x,
+                        y: this.y,
+                        width: this.width,
+                        height: this.height
+                    }
+                ];*/
+
+                if (typeof background.getItems !== 'undefined') {
+                    this.items = background.getItems.bind(this).call();
+                }
+
+                /*if(typeof shadow !== 'undefined')
+                {
+                    this.items[0].shadow = shadow;
+                }*/
+            };
+            bg.build();
+        }
+
+        if (this.orientation === Orientation.HORIZONTAL) {
+            if (this.verticalAlignment === Alignment.TOP) {
+                for (let i = 0, cX = this.x; i < this.views.length; ++i) {
+                    const view = this.views[i];
+                    cX += view.margin.left;
+                    view.x = cX;
+
+                    cX += view.width + view.margin.right;
+
+                    view.y = this.y + view.margin.top;
+                    view.build();
+                    if (typeof view.onLayoutBuild !== 'undefined') view.onLayoutBuild();
+                }
+            } else if (this.verticalAlignment === Alignment.BOTTOM) {
+                const yToBottom = this.y + this.height;
+                for (let i = 0, cX = this.x; i < this.views.length; ++i) {
+                    const view = this.views[i];
+                    cX += view.margin.left;
+                    view.x = cX;
+
+                    cX += view.width + view.margin.right;
+
+                    view.y = yToBottom - view.height + view.margin.bottom;
+                    view.build();
+                    if (typeof view.onLayoutBuild !== 'undefined') view.onLayoutBuild();
+                }
+            }
+        } else {
+            if (this.horizontalAlignment === Alignment.CENTER) {
+                for (let i = 0, cY = this.y; i < this.views.length; ++i) {
+                    const view = this.views[i];
+                    cY += view.margin.top;
+                    view.x = ((this.width - view.width + view.margin.left + view.margin.right) / 2) + this.x;
+                    view.y = cY;
+
+                    cY += view.height + view.margin.bottom;
+                    view.build();
+                    if (typeof view.onLayoutBuild !== 'undefined') view.onLayoutBuild();
+                }
+            }
+        }
+
+        if (typeof this.onPostBuild !== 'undefined') {
+            this.onPostBuild(); // It is executed once, on the first construction of the object
+            delete this.onPostBuild;
+        }
+    };
+}

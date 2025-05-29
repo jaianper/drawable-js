@@ -20,16 +20,13 @@ export default [
       quotes: ['error', 'single'],
       'no-unused-vars': 'warn',
       'no-console': 'off',
-
       // eslint-plugin-import rules
       'import/no-unresolved': 'error',
       'import/no-duplicates': 'warn',
-
       // eslint-plugin-security rules
       'security/detect-object-injection': 'warn',
-
-      // eslint-plugin-unicorn rules (ejemplos)
-      'unicorn/prevent-abbreviations': 'off', // puedes desactivar si quieres
+      // eslint-plugin-unicorn rules
+      'unicorn/prevent-abbreviations': 'off', // 
       'unicorn/no-null': 'off',
       //'unicorn/filename-case': ['error', { case: 'kebabCase' }],
       'unicorn/filename-case': 'off'

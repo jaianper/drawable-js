@@ -19,7 +19,7 @@
     "url": "https://github.com/jaianper/drawable-js.git"
   },
   "author": "jaianper",
-  "license": "GPL-3.0",
+  "license": "MIT",
   "type": "module",
   "keywords": [
     "canvas",
