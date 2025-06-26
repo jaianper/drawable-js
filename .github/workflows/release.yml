@@ -25,5 +25,5 @@ jobs:
       - name: Run semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}  # Agrega tu token de npm en Repository Secrets
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}  # Add NPM token in Repository Secrets
         run: npx semantic-release
