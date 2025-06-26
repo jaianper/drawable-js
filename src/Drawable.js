@@ -118,7 +118,7 @@ export const FontLoader = {
 };
 
 // --- Internal functions ---
-const getPointsFromAngle = (angle, center, width, height) => {
+export const getPointsFromAngle = (angle, center, width, height) => {
     // Convert center of % to decimal values
     const centerXPercent = center?.x ? parseFloat(center.x.replace('%', '')) / 100 : 0;
     const centerYPercent = center?.y ? parseFloat(center.y.replace('%', '')) / 100 : 0;
@@ -176,69 +176,69 @@ const getPointsFromAngle = (angle, center, width, height) => {
     let x0, y0, x1, y1;
 
     switch (quadrant) {
-        case 1:
-            if (angleInQuadrant < fovAngle) {
-                x0 = halfWidth - adjacent;
-                y0 = halfHeight + opposite;
-                x1 = halfWidth + adjacent;
-                y1 = halfHeight - opposite;
-            } else {
-                x0 = halfWidth - opposite;
-                y0 = halfHeight + adjacent;
-                x1 = halfWidth + opposite;
-                y1 = halfHeight - adjacent;
-            }
-            x0 += width * centerXPercent;
-            y0 -= height * centerYPercent;
-            break;
+    case 1:
+        if (angleInQuadrant < fovAngle) {
+            x0 = halfWidth - adjacent;
+            y0 = halfHeight + opposite;
+            x1 = halfWidth + adjacent;
+            y1 = halfHeight - opposite;
+        } else {
+            x0 = halfWidth - opposite;
+            y0 = halfHeight + adjacent;
+            x1 = halfWidth + opposite;
+            y1 = halfHeight - adjacent;
+        }
+        x0 += width * centerXPercent;
+        y0 -= height * centerYPercent;
+        break;
 
-        case 2:
-            if (angleInQuadrant < altFovAngle) {
-                x0 = halfWidth + opposite;
-                y0 = halfHeight + adjacent;
-                x1 = halfWidth - opposite;
-                y1 = halfHeight - adjacent;
-            } else {
-                x0 = halfWidth + adjacent;
-                y0 = halfHeight + opposite;
-                x1 = halfWidth - adjacent;
-                y1 = halfHeight - opposite;
-            }
-            x0 -= width * centerXPercent;
-            y0 -= height * centerYPercent;
-            break;
+    case 2:
+        if (angleInQuadrant < altFovAngle) {
+            x0 = halfWidth + opposite;
+            y0 = halfHeight + adjacent;
+            x1 = halfWidth - opposite;
+            y1 = halfHeight - adjacent;
+        } else {
+            x0 = halfWidth + adjacent;
+            y0 = halfHeight + opposite;
+            x1 = halfWidth - adjacent;
+            y1 = halfHeight - opposite;
+        }
+        x0 -= width * centerXPercent;
+        y0 -= height * centerYPercent;
+        break;
 
-        case 3:
-            if (angleInQuadrant < fovAngle) {
-                x0 = halfWidth + adjacent;
-                y0 = halfHeight - opposite;
-                x1 = halfWidth - adjacent;
-                y1 = halfHeight + opposite;
-            } else {
-                x0 = halfWidth + opposite;
-                y0 = halfHeight - adjacent;
-                x1 = halfWidth - opposite;
-                y1 = halfHeight + adjacent;
-            }
-            x0 -= width * centerXPercent;
-            y0 += height * centerYPercent;
-            break;
+    case 3:
+        if (angleInQuadrant < fovAngle) {
+            x0 = halfWidth + adjacent;
+            y0 = halfHeight - opposite;
+            x1 = halfWidth - adjacent;
+            y1 = halfHeight + opposite;
+        } else {
+            x0 = halfWidth + opposite;
+            y0 = halfHeight - adjacent;
+            x1 = halfWidth - opposite;
+            y1 = halfHeight + adjacent;
+        }
+        x0 -= width * centerXPercent;
+        y0 += height * centerYPercent;
+        break;
 
-        case 4:
-            if (angleInQuadrant < altFovAngle) {
-                x0 = halfWidth - opposite;
-                y0 = halfHeight - adjacent;
-                x1 = halfWidth + opposite;
-                y1 = halfHeight + adjacent;
-            } else {
-                x0 = halfWidth - adjacent;
-                y0 = halfHeight - opposite;
-                x1 = halfWidth + adjacent;
-                y1 = halfHeight + opposite;
-            }
-            x0 += width * centerXPercent;
-            y0 += height * centerYPercent;
-            break;
+    case 4:
+        if (angleInQuadrant < altFovAngle) {
+            x0 = halfWidth - opposite;
+            y0 = halfHeight - adjacent;
+            x1 = halfWidth + opposite;
+            y1 = halfHeight + adjacent;
+        } else {
+            x0 = halfWidth - adjacent;
+            y0 = halfHeight - opposite;
+            x1 = halfWidth + adjacent;
+            y1 = halfHeight + opposite;
+        }
+        x0 += width * centerXPercent;
+        y0 += height * centerYPercent;
+        break;
     }
 
     return {x0, y0, x1, y1};
@@ -392,22 +392,22 @@ export function Drawable(width = 0, height = 0, x = 0, y = 0) {
                 if (typeof item.lineHeight !== 'undefined') adjustedY -= item.lineHeight;
 
                 switch (item.verticalAlign) {
-                    case 'top':
-                        adjustedY -= shadowBlur;
-                        mY = adjustedY;
-                        adjustedY += ascent;
-                        break;
-                    case 'middle':
-                        mY = adjustedY - halfAscent;
-                        adjustedY += halfAscent - (descent / 2);
-                        break;
-                    case 'bottom':
-                        mY = adjustedY - ascent;
-                        break;
-                    default:
-                        adjustedY -= shadowBlur;
-                        mY = adjustedY;
-                        adjustedY += ascent;
+                case 'top':
+                    adjustedY -= shadowBlur;
+                    mY = adjustedY;
+                    adjustedY += ascent;
+                    break;
+                case 'middle':
+                    mY = adjustedY - halfAscent;
+                    adjustedY += halfAscent - (descent / 2);
+                    break;
+                case 'bottom':
+                    mY = adjustedY - ascent;
+                    break;
+                default:
+                    adjustedY -= shadowBlur;
+                    mY = adjustedY;
+                    adjustedY += ascent;
                 }
                 this.x = item.x - halfAscent;
                 this.y = mY - shadowBlur - halfAscent;
