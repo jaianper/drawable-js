@@ -2,7 +2,7 @@
 
 This folder contains two demos to help you test and explore how the library works in real web pages. You can choose between a modern approach using ES modules, or a classic one using a traditional script tag.
 
-## esm/index.html
+## esm/drawable-demo.html
 A demo using **ES Modules** (`<script type="module">`).
 
 ### How to use:
@@ -14,7 +14,7 @@ A demo using **ES Modules** (`<script type="module">`).
 
 2. Open in your browser:
    ```
-   http://localhost:8080/demo/esm/index.html
+   http://localhost:8080/demo/esm/drawable-demo.html
    ```
 
 3. The script uses:
@@ -26,14 +26,14 @@ A demo using **ES Modules** (`<script type="module">`).
    npm run build
    ```
 
-## umd/index.html
+## umd/drawable-demo.html
 A demo using a **classic script tag** and the UMD build (`drawable.umd.js`).
 
 ### How to use:
 1. Also requires a local server (same as above).
 2. Open:
    ```
-   http://localhost:8080/demo/umd/index.html
+   http://localhost:8080/demo/umd/drawable-demo.html
    ```
 
 3. The file loads:
