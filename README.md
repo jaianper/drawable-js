@@ -7,6 +7,7 @@
 [![License](https://img.shields.io/npm/l/drawable-js.svg)](LICENSE)
 ![GitHub language top](https://img.shields.io/github/languages/top/jaianper/drawable-js)
 [![ESLint](https://img.shields.io/badge/code_style-eslint-4B32C3?logo=eslint)](https://eslint.org/)
+[![CI](https://github.com/jaianper/drawable-js/actions/workflows/ci.yml/badge.svg)](https://github.com/jaianper/drawable-js/actions/workflows/ci.yml)
 
 **DrawableJS** is a lightweight JavaScript library to draw shapes, gradients, styled text, and more on HTML5 `<canvas>`. It is inspired by Android's `Drawable` resource, but designed for the modern web.
 
@@ -209,8 +210,8 @@ FontLoader.load({
 
 ## Demos
 You can explore working examples in the `/demo` folder:
-- `demo/esm/index.html`: for modern projects using `<script type="module">`
-- `demo/umd/index.html`: for legacy support using UMD script
+- `demo/esm/drawable-demo.html`: for modern projects using `<script type="module">`
+- `demo/umd/drawable-demo.html`: for legacy support using UMD script
 
 Run locally:
 ```bash

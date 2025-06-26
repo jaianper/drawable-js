@@ -651,7 +651,7 @@ export function Drawable(width = 0, height = 0, x = 0, y = 0) {
         }
     };
 } // End Drawable
-
+let firstLayout = false;
 export function LinearLayout(x, y) {
     this.margin = {top: 0, left: 0, bottom: 0, right: 0};
     this.views = [];
@@ -670,8 +670,7 @@ export function LinearLayout(x, y) {
         let height = 0;
 
         if (this.orientation === Orientation.HORIZONTAL) {
-            for (let i = 0; i < this.views.length; ++i) {
-                const view = this.views[i];
+            for (const view of this.views) {
 
                 if (typeof view.onLayout !== 'undefined') view.onLayout();
                 const vHeight = view.height + view.margin.top + view.margin.bottom;
@@ -680,8 +679,7 @@ export function LinearLayout(x, y) {
                 width += view.width + view.margin.left + view.margin.right;
             }
         } else {
-            for (let i = 0; i < this.views.length; ++i) {
-                const view = this.views[i];
+            for (const view of this.views) {
 
                 if (typeof view.onLayout !== 'undefined') view.onLayout();
                 const vWidth = view.width + view.margin.left + view.margin.right;
@@ -696,25 +694,32 @@ export function LinearLayout(x, y) {
     };
 
     this.build = function () {
-        this.onLayout();
-
+        
+        if(!firstLayout){
+            firstLayout = true;
+            this.onLayout();
+        }
+        
         if (typeof this.background !== 'undefined') {
             const background = this.background;
             const width = this.width + this.margin.left + this.margin.right;
             const height = this.height + this.margin.top + this.margin.bottom;
-            const bg = new Drawable(width, height, this.x - this.margin.left, this.y - this.margin.top);
+            const bgWidth = this.width;
+            const bgHeight = this.height;
+            const bg = new Drawable(width, height, this.x, this.y);
             bg.ctx = background.ctx;
+            bg.margin = this.margin;
             bg.update = function () {
-                /*this.items = [
+                this.items = [
                     {
                         shape: Shape.RECTANGLE,
                         color: background.color,
-                        x: this.x,
-                        y: this.y,
-                        width: this.width,
-                        height: this.height
+                        x: bg.x + bg.margin.left,
+                        y: bg.y + bg.margin.top,
+                        width: bgWidth,
+                        height: bgHeight
                     }
-                ];*/
+                ];
 
                 if (typeof background.getItems !== 'undefined') {
                     this.items = background.getItems.bind(this).call();
@@ -730,25 +735,21 @@ export function LinearLayout(x, y) {
 
         if (this.orientation === Orientation.HORIZONTAL) {
             if (this.verticalAlignment === Alignment.TOP) {
-                for (let i = 0, cX = this.x; i < this.views.length; ++i) {
-                    const view = this.views[i];
-                    cX += view.margin.left;
+                let cX = this.x + this.margin.left;
+                for (const view of this.views) {
                     view.x = cX;
+                    cX += view.margin.left + view.width + view.margin.right;
 
-                    cX += view.width + view.margin.right;
-
-                    view.y = this.y + view.margin.top;
+                    view.y = this.y + this.margin.top;
                     view.build();
                     if (typeof view.onLayoutBuild !== 'undefined') view.onLayoutBuild();
                 }
             } else if (this.verticalAlignment === Alignment.BOTTOM) {
+                let cX = this.x + this.margin.left;
                 const yToBottom = this.y + this.height;
-                for (let i = 0, cX = this.x; i < this.views.length; ++i) {
-                    const view = this.views[i];
-                    cX += view.margin.left;
+                for (const view of this.views) {
                     view.x = cX;
-
-                    cX += view.width + view.margin.right;
+                    cX += view.margin.left + view.width + view.margin.right;
 
                     view.y = yToBottom - view.height + view.margin.bottom;
                     view.build();
@@ -757,13 +758,13 @@ export function LinearLayout(x, y) {
             }
         } else {
             if (this.horizontalAlignment === Alignment.CENTER) {
-                for (let i = 0, cY = this.y; i < this.views.length; ++i) {
-                    const view = this.views[i];
-                    cY += view.margin.top;
-                    view.x = ((this.width - view.width + view.margin.left + view.margin.right) / 2) + this.x;
+                let cY = this.y + this.margin.top;
+                for (const view of this.views) {
+                    view.x = ((this.width - view.width + view.margin.left + view.margin.right) / 2) + this.x - this.margin.left;
                     view.y = cY;
 
-                    cY += view.height + view.margin.bottom;
+                    cY += view.margin.top + view.height + view.margin.bottom;
+                    
                     view.build();
                     if (typeof view.onLayoutBuild !== 'undefined') view.onLayoutBuild();
                 }

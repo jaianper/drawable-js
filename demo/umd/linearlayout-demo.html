@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>DrawableJS Demo</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .canvas-container {
+            position: relative;
+            width: 500px;
+            height: 500px;
+        }
+
+        canvas {
+            border: 1px solid #ccc;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+<h1>DrawableJS - UMD Demo Gallery</h1>
+<div class="canvas-container">
+    <canvas id="myCanvas" width="500" height="500"></canvas>
+</div>
+<script src="../../dist/drawable.umd.js"></script>
+<script>
+    const Drawable = DrawableJS.Drawable;
+    const LinearLayout = DrawableJS.LinearLayout;
+    const Alignment = DrawableJS.Alignment;
+    const Orientation = DrawableJS.Orientation;
+    const Font = DrawableJS.Font;
+    const Shape = DrawableJS.Shape;
+
+    const canvas = document.getElementById("myCanvas");
+    const ctx = canvas.getContext("2d");
+
+    const text = new Drawable(50, 15);
+    text.ctx = ctx;
+    text.update = () => {
+        text.items = [
+            {
+                shape: Shape.RECTANGLE,
+                x: text.x,
+                y: text.y,
+                width: 50,
+                height: 15,
+                margin: {top: 10, left: 10, bottom: 10, right: 10},
+                color: "#ffffff"
+            },
+            {
+                text: 'ABC',
+                font: {
+                    family: Font.ARIAL,
+                    size: 15,
+                    style: 'bold'
+                },
+                color: '#000000',
+                textAlign: 'center',
+                verticalAlign: 'middle',
+                margin: {top: 10, left: 10, bottom: 10, right: 10},
+                x: text.x + (text.width / 2),
+                y: text.y + (text.height / 2)
+            }
+        ];
+    };
+    
+    const layoutContainer = new LinearLayout();
+    layoutContainer.verticalAlignment = Alignment.CENTER;
+    layoutContainer.horizontalAlignment = Alignment.CENTER;
+    layoutContainer.orientation = Orientation.VERTICAL;
+    layoutContainer.background = { ctx: ctx, color: "grey" };
+    layoutContainer.margin = {top: 10, left: 10, bottom: 10, right: 10};
+
+    const topLayout = new LinearLayout();
+    topLayout.verticalAlignment = Alignment.TOP;
+    topLayout.horizontalAlignment = Alignment.CENTER;
+    topLayout.orientation = Orientation.HORIZONTAL;
+    topLayout.background = { ctx: ctx, color: "green" };
+    topLayout.margin = {top: 10, left: 10, bottom: 10, right: 10};
+
+    const bodyLayout = new LinearLayout();
+    bodyLayout.verticalAlignment = Alignment.TOP;
+    bodyLayout.horizontalAlignment = Alignment.CENTER;
+    bodyLayout.orientation = Orientation.HORIZONTAL;
+    bodyLayout.background = { ctx: ctx, color: "green" };
+    bodyLayout.margin = {top: 10, left: 10, bottom: 10, right: 10};
+
+    const bottomLayout = new LinearLayout();
+    bottomLayout.verticalAlignment = Alignment.TOP;
+    bottomLayout.horizontalAlignment = Alignment.CENTER;
+    bottomLayout.orientation = Orientation.HORIZONTAL;
+    bottomLayout.background = { ctx: ctx, color: "green" };
+    bottomLayout.margin = {top: 10, left: 10, bottom: 10, right: 10};
+
+    const subLayout_1 = new LinearLayout();
+    subLayout_1.verticalAlignment = Alignment.TOP;
+    subLayout_1.horizontalAlignment = Alignment.CENTER;
+    subLayout_1.orientation = Orientation.HORIZONTAL;
+    subLayout_1.background = { ctx: ctx, color: "yellow" };
+    subLayout_1.margin = {top: 10, left: 10, bottom: 10, right: 10};
+    subLayout_1.addView(text);
+
+    const subLayout_2 = new LinearLayout();
+    subLayout_2.verticalAlignment = Alignment.TOP;
+    subLayout_2.horizontalAlignment = Alignment.CENTER;
+    subLayout_2.orientation = Orientation.HORIZONTAL;
+    subLayout_2.background = { ctx: ctx, color: "blue" };
+    subLayout_2.margin = {top: 10, left: 10, bottom: 10, right: 10};
+    subLayout_2.addView(text);
+
+    const subLayout_3 = new LinearLayout();
+    subLayout_3.verticalAlignment = Alignment.TOP;
+    subLayout_3.horizontalAlignment = Alignment.CENTER;
+    subLayout_3.orientation = Orientation.HORIZONTAL;
+    subLayout_3.background = { ctx: ctx, color: "red" };
+    subLayout_3.margin = {top: 10, left: 10, bottom: 10, right: 10};
+    subLayout_3.addView(text);
+
+    const subLayout_4 = new LinearLayout();
+    subLayout_4.verticalAlignment = Alignment.CENTER;
+    subLayout_4.horizontalAlignment = Alignment.CENTER;
+    subLayout_4.orientation = Orientation.VERTICAL;
+    subLayout_4.background = { ctx: ctx, color: "orange" };
+    subLayout_4.margin = {top: 10, left: 10, bottom: 10, right: 10};
+
+    const subLayout_4_1 = new LinearLayout();
+    subLayout_4_1.verticalAlignment = Alignment.TOP;
+    subLayout_4_1.horizontalAlignment = Alignment.CENTER;
+    subLayout_4_1.orientation = Orientation.HORIZONTAL;
+    subLayout_4_1.background = { ctx: ctx, color: "yellow" };
+    subLayout_4_1.margin = {top: 10, left: 10, bottom: 10, right: 10};
+    subLayout_4_1.addView(text);
+
+    const subLayout_4_2 = new LinearLayout();
+    subLayout_4_2.verticalAlignment = Alignment.TOP;
+    subLayout_4_2.horizontalAlignment = Alignment.CENTER;
+    subLayout_4_2.orientation = Orientation.HORIZONTAL;
+    subLayout_4_2.background = { ctx: ctx, color: "yellow" };
+    subLayout_4_2.margin = {top: 10, left: 10, bottom: 10, right: 10};
+    subLayout_4_2.addView(text);
+
+    const subLayout_4_3 = new LinearLayout();
+    subLayout_4_3.verticalAlignment = Alignment.TOP;
+    subLayout_4_3.horizontalAlignment = Alignment.CENTER;
+    subLayout_4_3.orientation = Orientation.HORIZONTAL;
+    subLayout_4_3.background = { ctx: ctx, color: "yellow" };
+    subLayout_4_3.margin = {top: 10, left: 10, bottom: 10, right: 10};
+    subLayout_4_3.addView(text);
+
+    const subLayout_5 = new LinearLayout();
+    subLayout_5.verticalAlignment = Alignment.CENTER;
+    subLayout_5.horizontalAlignment = Alignment.CENTER;
+    subLayout_5.orientation = Orientation.VERTICAL;
+    subLayout_5.background = { ctx: ctx, color: "orange" };
+    subLayout_5.margin = {top: 10, left: 10, bottom: 10, right: 10};
+
+    const subLayout_5_1 = new LinearLayout();
+    subLayout_5_1.verticalAlignment = Alignment.TOP;
+    subLayout_5_1.horizontalAlignment = Alignment.CENTER;
+    subLayout_5_1.orientation = Orientation.HORIZONTAL;
+    subLayout_5_1.background = { ctx: ctx, color: "yellow" };
+    subLayout_5_1.margin = {top: 10, left: 10, bottom: 10, right: 10};
+    subLayout_5_1.addView(text);
+
+    const subLayout_5_2 = new LinearLayout();
+    subLayout_5_2.verticalAlignment = Alignment.TOP;
+    subLayout_5_2.horizontalAlignment = Alignment.CENTER;
+    subLayout_5_2.orientation = Orientation.HORIZONTAL;
+    subLayout_5_2.background = { ctx: ctx, color: "yellow" };
+    subLayout_5_2.margin = {top: 10, left: 10, bottom: 10, right: 10};
+    subLayout_5_2.addView(text);
+
+    const subLayout_5_3 = new LinearLayout();
+    subLayout_5_3.verticalAlignment = Alignment.TOP;
+    subLayout_5_3.horizontalAlignment = Alignment.CENTER;
+    subLayout_5_3.orientation = Orientation.HORIZONTAL;
+    subLayout_5_3.background = { ctx: ctx, color: "yellow" };
+    subLayout_5_3.margin = {top: 10, left: 10, bottom: 10, right: 10};
+    subLayout_5_3.addView(text);
+
+    const subLayout_6 = new LinearLayout();
+    subLayout_6.verticalAlignment = Alignment.TOP;
+    subLayout_6.horizontalAlignment = Alignment.CENTER;
+    subLayout_6.orientation = Orientation.HORIZONTAL;
+    subLayout_6.background = { ctx: ctx, color: "red" };
+    subLayout_6.margin = {top: 10, left: 10, bottom: 10, right: 10};
+    subLayout_6.addView(text);
+
+    const subLayout_7 = new LinearLayout();
+    subLayout_7.verticalAlignment = Alignment.TOP;
+    subLayout_7.horizontalAlignment = Alignment.CENTER;
+    subLayout_7.orientation = Orientation.HORIZONTAL;
+    subLayout_7.background = { ctx: ctx, color: "red" };
+    subLayout_7.margin = {top: 10, left: 10, bottom: 10, right: 10};
+    subLayout_7.addView(text);
+
+    const subLayout_8 = new LinearLayout();
+    subLayout_8.verticalAlignment = Alignment.TOP;
+    subLayout_8.horizontalAlignment = Alignment.CENTER;
+    subLayout_8.orientation = Orientation.HORIZONTAL;
+    subLayout_8.background = { ctx: ctx, color: "red" };
+    subLayout_8.margin = {top: 10, left: 10, bottom: 10, right: 10};
+    subLayout_8.addView(text);
+    
+    topLayout.addView(subLayout_1);
+    topLayout.addView(subLayout_2);
+    topLayout.addView(subLayout_3);
+
+    subLayout_4.addView(subLayout_4_1);
+    subLayout_4.addView(subLayout_4_2);
+    subLayout_4.addView(subLayout_4_3);
+
+    subLayout_5.addView(subLayout_5_1);
+    subLayout_5.addView(subLayout_5_2);
+    subLayout_5.addView(subLayout_5_3);
+
+    bodyLayout.addView(subLayout_4);
+    bodyLayout.addView(subLayout_5);
+
+    bottomLayout.addView(subLayout_6);
+    bottomLayout.addView(subLayout_7);
+    bottomLayout.addView(subLayout_8);
+
+    layoutContainer.addView(topLayout);
+    layoutContainer.addView(bodyLayout);
+    layoutContainer.addView(bottomLayout);
+    layoutContainer.build();
+
+</script>
+</body>
+</html>
